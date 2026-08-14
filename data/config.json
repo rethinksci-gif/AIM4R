@@ -8,55 +8,113 @@
     "temperature": 0.3,
     "max_tokens": 8192,
     "throttle_sec": 0.0,
-    "analysis_concurrency": 1,
+    "analysis_concurrency": 2,
     "enrichment_concurrency": 1,
-    "languages": ["zh"],
+    "languages": [
+      "zh"
+    ],
     "azure_endpoint_env": null,
     "api_version": null
   },
   "sources": {
     "github": [],
     "hackernews": {
-      "enabled": true,
+      "enabled": false,
       "fetch_top_stories": 30,
-      "min_score": 50,
-      "category": "tech",
+      "min_score": 100,
+      "category": null,
       "profile": null
     },
     "rss": [
       {
+        "name": "arXiv Robotics",
+        "url": "https://rss.arxiv.org/rss/cs.RO",
+        "enabled": true,
+        "category": "embodied-ai",
+        "profile": "tech-blog"
+      },
+      {
         "name": "IEEE Spectrum Robotics",
         "url": "https://spectrum.ieee.org/feeds/topic/robotics.rss",
         "enabled": true,
-        "category": "robotics",
+        "category": "embodied-ai",
+        "profile": null
+      },
+      {
+        "name": "News: Embodied AI",
+        "url": "https://news.google.com/rss/search?q=%22embodied+AI%22+OR+%22humanoid+robot%22+OR+%22vision-language-action%22+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "enabled": true,
+        "category": "embodied-ai",
+        "profile": null
+      },
+      {
+        "name": "arXiv Materials Science",
+        "url": "https://rss.arxiv.org/rss/cond-mat.mtrl-sci",
+        "enabled": true,
+        "category": "mat-informatics",
+        "profile": "tech-blog"
+      },
+      {
+        "name": "News: Materials Informatics",
+        "url": "https://news.google.com/rss/search?q=%22materials+informatics%22+OR+%22self-driving+lab%22+OR+%22AI+materials+discovery%22+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "enabled": true,
+        "category": "mat-informatics",
+        "profile": null
+      },
+      {
+        "name": "arXiv Soft Matter",
+        "url": "https://rss.arxiv.org/rss/cond-mat.soft",
+        "enabled": true,
+        "category": "polymer-circular",
+        "profile": "tech-blog"
+      },
+      {
+        "name": "News: Circular Polymers",
+        "url": "https://news.google.com/rss/search?q=%22recycled+polypropylene%22+OR+%22chemical+recycling%22+OR+%22circular+polymer%22+OR+%22post-consumer+resin%22+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "enabled": true,
+        "category": "polymer-circular",
         "profile": null
       },
       {
         "name": "The Robot Report",
         "url": "https://www.therobotreport.com/feed/",
         "enabled": true,
-        "category": "robotics",
+        "category": "manufacturing-ai",
+        "profile": null
+      },
+      {
+        "name": "News: Manufacturing AI",
+        "url": "https://news.google.com/rss/search?q=%22smart+manufacturing%22+AI+OR+%22additive+manufacturing%22+machine+learning+OR+%22industrial+automation%22+AI+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "enabled": true,
+        "category": "manufacturing-ai",
         "profile": null
       },
       {
         "name": "Robohub",
         "url": "https://robohub.org/feed/",
         "enabled": true,
-        "category": "robotics",
+        "category": "manipulation",
         "profile": null
       },
       {
-        "name": "arXiv Robotics",
-        "url": "https://rss.arxiv.org/rss/cs.RO",
+        "name": "News: Robot Manipulation",
+        "url": "https://news.google.com/rss/search?q=%22robotic+manipulation%22+OR+%22dexterous+grasping%22+OR+%22tactile+sensing%22+robot+when:7d&hl=en-US&gl=US&ceid=US:en",
         "enabled": true,
-        "category": "research",
-        "profile": "tech-blog"
+        "category": "manipulation",
+        "profile": null
       },
       {
-        "name": "arXiv Materials Science",
-        "url": "https://rss.arxiv.org/rss/cond-mat.mtrl-sci",
+        "name": "News: Material Foundation Models",
+        "url": "https://news.google.com/rss/search?q=%22foundation+model%22+materials+OR+%22interatomic+potential%22+OR+MatterGen+OR+%22Materials+Project%22+when:7d&hl=en-US&gl=US&ceid=US:en",
         "enabled": true,
-        "category": "materials",
+        "category": "mat-foundation",
+        "profile": null
+      },
+      {
+        "name": "arXiv ML for Science",
+        "url": "https://rss.arxiv.org/rss/physics.comp-ph",
+        "enabled": true,
+        "category": "mat-foundation",
         "profile": "tech-blog"
       }
     ],
@@ -69,85 +127,125 @@
           "sort": "hot",
           "time_filter": "day",
           "fetch_limit": 15,
-          "min_score": 5,
-          "category": "robotics",
-          "profile": null
-        },
-        {
-          "subreddit": "reinforcementlearning",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 15,
-          "min_score": 5,
-          "category": "robotics",
-          "profile": null
-        },
-        {
-          "subreddit": "MaterialsScience",
-          "enabled": true,
-          "sort": "hot",
-          "time_filter": "day",
-          "fetch_limit": 10,
-          "min_score": 3,
-          "category": "materials",
+          "min_score": 20,
+          "category": "embodied-ai",
           "profile": null
         }
       ],
       "users": [],
-      "fetch_comments": 10
+      "fetch_comments": 8
     },
-    "telegram": { "enabled": false, "channels": [] },
+    "telegram": {
+      "enabled": false,
+      "channels": []
+    },
     "twitter": null,
     "openbb": null,
     "ossinsight": {
-      "enabled": false,
+      "enabled": true,
       "period": "past_24_hours",
-      "languages": ["All", "Python", "TypeScript"],
-      "keywords": [],
-      "min_stars": 5,
-      "max_items": 30,
-      "category": null,
+      "languages": [
+        "All",
+        "Python"
+      ],
+      "keywords": [
+        "robot",
+        "material",
+        "molecul",
+        "chemistry",
+        "simulation",
+        "embodied",
+        "manipulation"
+      ],
+      "min_stars": 20,
+      "max_items": 15,
+      "category": "mat-foundation",
       "profile": null
     },
     "gdelt": null,
     "google_news": null
   },
-  "collection": { "time_window_hours": 24 },
+  "collection": {
+    "time_window_hours": 168
+  },
   "digest": {
-    "max_items": 20,
+    "max_items": 36,
     "category_groups": {
-      "robotics": {
-        "name": "机器人与具身智能",
+      "embodied-ai": {
+        "name": "Embodied AI",
         "limit": 8,
-        "categories": ["robotics"]
+        "categories": [
+          "embodied-ai"
+        ]
       },
-      "materials": {
-        "name": "材料",
-        "limit": 5,
-        "categories": ["materials"]
+      "mat-informatics": {
+        "name": "Material Informatics",
+        "limit": 6,
+        "categories": [
+          "mat-informatics"
+        ]
       },
-      "research": {
-        "name": "前沿论文",
-        "limit": 5,
-        "categories": ["research"]
+      "polymer-circular": {
+        "name": "Polymer & Circular Materials",
+        "limit": 6,
+        "categories": [
+          "polymer-circular"
+        ]
+      },
+      "manufacturing-ai": {
+        "name": "Manufacturing AI",
+        "limit": 6,
+        "categories": [
+          "manufacturing-ai"
+        ]
+      },
+      "manipulation": {
+        "name": "Robot Manipulation",
+        "limit": 6,
+        "categories": [
+          "manipulation"
+        ]
+      },
+      "mat-foundation": {
+        "name": "Material Data & Foundation Models",
+        "limit": 6,
+        "categories": [
+          "mat-foundation"
+        ]
       }
     },
     "default_group": "other",
-    "default_group_limit": 3,
-    "profile_order": ["tech-news", "tech-blog", "finance-news"]
+    "default_group_limit": 2,
+    "profile_order": [
+      "tech-news",
+      "tech-blog",
+      "finance-news"
+    ]
   },
   "processing": {
     "profiles_dir": "profiles",
     "default_profile": "tech-news",
     "profile_settings": {
-      "tech-news": { "threshold": 6.0, "topic_dedup": true },
-      "tech-blog": { "threshold": 6.5, "topic_dedup": true },
-      "finance-news": { "threshold": 7.0, "topic_dedup": true }
+      "tech-news": {
+        "threshold": 6.0,
+        "topic_dedup": true
+      },
+      "tech-blog": {
+        "threshold": 6.5,
+        "topic_dedup": true
+      },
+      "finance-news": {
+        "threshold": 7.0,
+        "topic_dedup": true
+      }
     }
   },
-  "display": { "icon_style": "emoji" },
+  "display": {
+    "icon_style": "emoji"
+  },
   "extractors": {},
   "email": null,
-  "webhook": null
+  "webhook": {
+    "enabled": false
+  }
 }
