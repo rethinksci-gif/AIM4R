@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  {% include head-custom.html %}
+</head>
+<body class="{% if page.page_kind == 'home' %}home-page{% else %}reading-page{% endif %}">
+  <a class="skip-link" href="#content">跳转正文 / Skip to content</a>
+  <header class="site-masthead">
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="AIM4R 首页"><span class="brand-mark" aria-hidden="true">A<span>↗</span></span><span>AIM4R<span class="wordmark-sub">RESEARCH INTELLIGENCE / DAILY</span></span></a>
+    <nav aria-label="主导航 / Navigation"><a href="{{ '/' | relative_url }}#archive">日报 / Digest</a><a href="{{ '/feed-zh.xml' | relative_url }}">RSS ↗</a></nav>
+    {% if page.page_kind == 'home' %}
+    <div class="language-switch" aria-label="Language"><button type="button" data-lang="zh" aria-pressed="true">中文</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    {% else %}
+      {% assign alternate_url = page.url | replace: '-zh', '-en' %}
+      {% if page.lang == 'en' %}{% assign alternate_url = page.url | replace: '-en', '-zh' %}{% endif %}
+      {% assign alternate = site.posts | where: 'url', alternate_url | first %}
+      {% if alternate and alternate.url != page.url %}<a class="alternate-language" href="{{ alternate.url | relative_url }}" lang="{{ alternate.lang }}">{% if page.lang == 'en' %}中文{% else %}EN{% endif %}</a>{% endif %}
+    {% endif %}
+    <details class="reading-settings"><summary aria-label="阅读设置 / Reading settings">Aa</summary><div class="settings-panel"><label for="theme-setting">外观 / Appearance</label><select id="theme-setting"><option value="system">跟随系统 / System</option><option value="light">浅色 / Light</option><option value="dark">深色 / Dark</option></select><label for="size-setting">字号 / Text size</label><select id="size-setting"><option value="standard">标准 / Standard</option><option value="large">大号 / Large</option></select></div></details>
+  </header>
+  <main id="content" class="main-content" tabindex="-1">
+    {% if page.page_kind == 'home' %}{{ content }}{% else %}
+    <div class="article-shell"><aside class="article-sidebar"><a class="back-link" href="{{ '/' | relative_url }}#archive">← 日报首页 / All digests</a><nav class="article-toc" aria-label="文章目录 / Contents" hidden><p class="section-number">本页目录 / CONTENTS</p><ol></ol></nav></aside><article class="article-body"><header class="article-heading"><p class="eyebrow">AIM4R / {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% else %}REFERENCE{% endif %}</p><h1>{% if page.lang == 'zh' %}{{ page.title | replace: 'Horizon Summary:', 'AIM4R 日报 ·' | remove: '(ZH)' | escape }}{% else %}{{ page.title | replace: 'Horizon Summary:', 'AIM4R Digest ·' | remove: '(EN)' | escape }}{% endif %}</h1></header><div class="article-content">{{ content }}</div><a class="back-link article-end" href="{{ '/' | relative_url }}#archive">← 返回日报 / All digests</a></article></div>
+    {% endif %}
+  </main>
+  <footer class="signal-footer"><a href="{{ '/' | relative_url }}">AIM4R / 每日研究情报</a><span>机器人 · 具身智能 · 材料前沿</span><a href="https://github.com/rethinksci-gif/AIM4R">GitHub ↗</a></footer>
+</body>
+</html>
