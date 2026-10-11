@@ -47,6 +47,88 @@ class ProfileEnrichment(BaseModel):
         return self
 
 
+class RubricGate(BaseModel):
+    """An admission condition; failing any gate rejects the item."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str = Field(pattern=r"^[a-z][a-z0-9_]*$")
+    description: str
+
+
+class RubricDimension(BaseModel):
+    """A weighted scoring dimension with an optional non-compensable floor."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str = Field(pattern=r"^[a-z][a-z0-9_]*$")
+    weight: float = Field(gt=0, le=1)
+    description: str
+    min_score: Optional[float] = Field(default=None, ge=0, le=10)
+
+
+class RubricExploreRule(BaseModel):
+    """Route items that are weak on one dimension to an exploration track."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    dimension: str
+    below: float = Field(ge=0, le=10)
+    min_total: Optional[float] = Field(default=None, ge=0, le=10)
+
+
+class ProfileTopic(BaseModel):
+    """Reader-facing topic used for grouping and navigation."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: str = Field(pattern=r"^[a-z][a-z0-9_-]*$")
+    names: dict[str, str]
+    description: str = ""
+    target_share: Optional[float] = Field(default=None, ge=0, le=1)
+
+
+class ProfileRubric(BaseModel):
+    """Two-step selection: admission gates, then weighted dimensions.
+
+    The model reports per-gate and per-dimension judgments with reasons; the
+    engine computes the weighted score so the arithmetic and the
+    non-compensable floors are enforced deterministically.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    gates: list[RubricGate] = Field(default_factory=list)
+    dimensions: list[RubricDimension] = Field(min_length=1)
+    content_types: list[str] = Field(default_factory=list)
+    explore: Optional[RubricExploreRule] = None
+
+    @model_validator(mode="after")
+    def validate_rubric(self) -> "ProfileRubric":
+        ids = [dimension.id for dimension in self.dimensions]
+        if len(ids) != len(set(ids)):
+            raise ValueError("rubric dimension IDs must be unique")
+        gate_ids = [gate.id for gate in self.gates]
+        if len(gate_ids) != len(set(gate_ids)):
+            raise ValueError("rubric gate IDs must be unique")
+        total = sum(dimension.weight for dimension in self.dimensions)
+        if abs(total - 1.0) > 1e-6:
+            raise ValueError(f"rubric dimension weights must sum to 1.0, got {total}")
+        if self.explore and self.explore.dimension not in ids:
+            raise ValueError(f"explore rule uses unknown dimension: {self.explore.dimension}")
+        return self
+
+
+class ProfileEvidence(BaseModel):
+    """Language-neutral evidence extraction before localized writing."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    prompt: str
+    max_chars: int = Field(default=30000, ge=1000, le=200_000)
+    deep_fetch: bool = True
+
+
 class ProfileDefinition(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -57,6 +139,9 @@ class ProfileDefinition(BaseModel):
     analysis: str
     content: ProfileContent = Field(default_factory=ProfileContent)
     enrichment: ProfileEnrichment
+    rubric: Optional[ProfileRubric] = None
+    topics: list[ProfileTopic] = Field(default_factory=list)
+    evidence: Optional[ProfileEvidence] = None
 
 
 @dataclass(frozen=True)
@@ -65,6 +150,7 @@ class LoadedProfile:
     match_prompt: str
     analysis_prompt: str
     enrichment_prompt: str
+    evidence_prompt: str = ""
 
     @property
     def id(self) -> str:
@@ -112,6 +198,11 @@ class ProfileRegistry:
                 analysis_prompt=cls._read_prompt(profile_dir, definition.analysis),
                 enrichment_prompt=cls._read_prompt(
                     profile_dir, definition.enrichment.prompt
+                ),
+                evidence_prompt=(
+                    cls._read_prompt(profile_dir, definition.evidence.prompt)
+                    if definition.evidence
+                    else ""
                 ),
             )
         if not profiles:

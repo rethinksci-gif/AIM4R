@@ -1,6 +1,8 @@
 """Trafilatura-based article extractor."""
 
+import html
 import logging
+import re
 from typing import Optional
 
 import httpx
@@ -20,6 +22,20 @@ ARTICLE_HEADERS = {
     "Accept": "text/html,application/xhtml+xml,*/*",
     "Accept-Language": "en-US,en;q=0.9",
 }
+
+
+_MATH_ELEMENT = re.compile(
+    r"<math\b[^>]*?\balttext=\"([^\"]*)\"[^>]*>.*?</math>", re.IGNORECASE | re.DOTALL
+)
+
+
+def _inline_math_alttext(page: str) -> str:
+    """Replace MathML with its alttext so numbers in formulas survive.
+
+    Paper renderings such as arXiv HTML put inline results ("0.874",
+    "+0.006") in <math> elements that text extraction otherwise drops.
+    """
+    return _MATH_ELEMENT.sub(lambda m: html.escape(html.unescape(m.group(1)), quote=False), page)
 
 
 class TrafilaturaExtractor(BaseExtractor):
@@ -42,7 +58,7 @@ class TrafilaturaExtractor(BaseExtractor):
 
         try:
             return trafilatura.extract(
-                response.text,
+                _inline_math_alttext(response.text),
                 favor_precision=self._config.favor_precision,
                 favor_recall=self._config.favor_recall,
             ) or None

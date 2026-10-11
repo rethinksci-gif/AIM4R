@@ -55,6 +55,20 @@ class ClassificationResult(BaseModel):
     reason: Optional[str] = None
 
 
+class RubricGateResult(BaseModel):
+    """Pass/fail outcome for one profile admission gate."""
+
+    passed: bool
+    reason: str = ""
+
+
+class RubricDimensionResult(BaseModel):
+    """Score and rationale for one weighted profile dimension."""
+
+    score: float = Field(ge=0, le=10, allow_inf_nan=False)
+    reason: str = ""
+
+
 class ContentAnalysis(BaseModel):
     """Profile-driven first-pass analysis."""
 
@@ -62,6 +76,53 @@ class ContentAnalysis(BaseModel):
     reason: str
     summary: str
     tags: List[str] = Field(default_factory=list)
+    # Optional rubric output for profiles that declare gates and dimensions.
+    content_type: Optional[str] = None
+    topic: Optional[str] = None
+    gates: Dict[str, RubricGateResult] = Field(default_factory=dict)
+    dimensions: Dict[str, RubricDimensionResult] = Field(default_factory=dict)
+    track: Optional[Literal["main", "explore", "rejected"]] = None
+    rejected_by: List[str] = Field(default_factory=list)
+
+
+class EvidenceClaim(BaseModel):
+    """A claim reported by the source with a verbatim supporting excerpt."""
+
+    claim: str
+    quote: str = ""
+    location: str = ""
+    quote_found: Optional[bool] = None
+
+
+class EvidenceRecord(BaseModel):
+    """Language-neutral evidence extracted once and shared by all languages.
+
+    Text fields hold what the source reports, or ``"not reported"``. Access
+    level, dates, source kind and review status are filled by code from the
+    fetch path and source configuration, never inferred by the model.
+    """
+
+    access_level: str = "unknown"
+    access_note: str = ""
+    source_kind: str = "unknown"
+    evidence_role: str = "unknown"
+    peer_review: str = "unknown"
+    validation_setting: str = "not reported"
+    independent_replication: str = "not reported"
+    published_at: Optional[str] = None
+    event_date: str = "unknown"
+    fetched_at: Optional[str] = None
+    material_system: str = "not reported"
+    data_scale: str = "not reported"
+    batches_or_lots: str = "not reported"
+    conditions: str = "not reported"
+    baseline: str = "not reported"
+    validation_method: str = "not reported"
+    claims: List[EvidenceClaim] = Field(default_factory=list)
+    results: List[str] = Field(default_factory=list)
+    limitations: List[str] = Field(default_factory=list)
+    reading_entry: str = ""
+    checks: Dict[str, Any] = Field(default_factory=dict)
 
 
 class ArtifactSource(BaseModel):
@@ -70,6 +131,9 @@ class ArtifactSource(BaseModel):
     id: str
     title: str
     url: str
+    # "search_lead" marks unverified search-engine results; they are leads,
+    # not evidence that the original page was read.
+    kind: str = "search_lead"
 
 
 class ContentBlock(BaseModel):
@@ -97,6 +161,7 @@ class ProcessingResult(BaseModel):
 
     classification: ClassificationResult
     analysis: Optional[ContentAnalysis] = None
+    evidence: Optional[EvidenceRecord] = None
     artifacts: Dict[str, ContentArtifact] = Field(default_factory=dict)
 
 
@@ -251,6 +316,9 @@ ExtractorConfig = Annotated[
 ]
 
 
+EvidenceRole = Literal["primary_evidence", "discovery", "commentary"]
+
+
 class RSSSourceConfig(BaseModel):
     """RSS feed source configuration."""
 
@@ -260,6 +328,16 @@ class RSSSourceConfig(BaseModel):
     category: Optional[str] = None
     content_extractor: Optional[str] = None
     profile: ProfileRoute = None
+    # Editorial metadata carried onto every item from this feed.
+    role: Optional[EvidenceRole] = None
+    source_kind: Optional[str] = None  # e.g. preprint, journal, vendor, trade_press
+    peer_review: Optional[Literal["peer_reviewed", "preprint", "not_applicable", "unknown"]] = None
+    # Cheap pre-AI topical filter over title + feed text. Every group must
+    # match at least one keyword (case-insensitive substring).
+    keyword_groups: List[List[str]] = Field(default_factory=list)
+    exclude_keywords: List[str] = Field(default_factory=list)
+    # Per-feed lookback override, e.g. for arXiv announcement lag.
+    lookback_hours: Optional[int] = Field(default=None, gt=0)
 
 
 class RedditSubredditConfig(BaseModel):
@@ -576,6 +654,10 @@ class CollectionConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     time_window_hours: int = 24
+    # Optional cross-run ledger. When set, items seen in earlier successful
+    # runs are skipped and each run's status is recorded.
+    history_path: Optional[str] = None
+    history_retention_days: int = Field(default=120, gt=0)
 
 
 class DigestConfig(BaseModel):
@@ -588,6 +670,14 @@ class DigestConfig(BaseModel):
     default_group: str = "other"
     default_group_limit: Optional[int] = Field(default=None, gt=0)
     profile_order: List[str] = Field(default_factory=list)
+    # "daily" is the original Markdown digest; "research" renders the
+    # evidence-first research edition and requires collection.history_path.
+    renderer: Literal["daily", "research"] = "daily"
+    # Per-track caps for rubric profiles, e.g. {"main": 3, "explore": 1}.
+    track_limits: Dict[str, int] = Field(default_factory=dict)
+    # Shortlisted candidates that get original-page reading and evidence
+    # extraction before final selection (bounds cost).
+    deep_read_limit: int = Field(default=6, ge=0)
 
     @field_validator("profile_order")
     @classmethod

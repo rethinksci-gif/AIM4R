@@ -16,7 +16,9 @@ from .prompting.analysis import analysis_system_prompt, analysis_user_prompt
 from .utils import parse_json_response
 from ..models import ContentAnalysis, ContentItem
 from ..processing.content import select_content, split_content
-from ..processing.profiles import ProfileRegistry
+from ..processing.evidence import classify_access
+from ..processing.profiles import LoadedProfile, ProfileRegistry
+from ..processing.rubric import RubricContractError, apply_rubric, parse_rubric_fields
 
 DEFAULT_THROTTLE_SEC = 0.0
 
@@ -105,6 +107,7 @@ class ContentAnalyzer:
         profile = await self.classifier.resolve(item)
         if item.processing:
             item.processing.artifacts.clear()
+        item.metadata["access_level"] = classify_access(item)
 
         content_parts = split_content(item.content)
         selected_content = select_content(
@@ -157,7 +160,7 @@ class ContentAnalyzer:
             user=user_prompt,
         )
 
-        result, failure = self._validate_analysis_response(response)
+        result, failure = self._validate_analysis_response(response, profile)
         if result is None:
             repair_response = await self.client.complete(
                 system=analysis_system_prompt(profile),
@@ -168,7 +171,7 @@ class ContentAnalyzer:
                 ),
                 temperature=0,
             )
-            result, failure = self._validate_analysis_response(repair_response)
+            result, failure = self._validate_analysis_response(repair_response, profile)
 
         if result is None:
             logger.warning(
@@ -191,12 +194,26 @@ class ContentAnalyzer:
     def _validate_analysis_response(
         cls,
         response: str,
+        profile: Optional[LoadedProfile] = None,
     ) -> tuple[Optional[ContentAnalysis], str]:
         parsed = cls._parse_json_response(response)
         if not isinstance(parsed, dict):
             return None, "response was not a JSON object"
+        rubric = profile.definition.rubric if profile else None
         try:
+            if rubric is not None:
+                fields = parse_rubric_fields(parsed, rubric)
+                result = ContentAnalysis(
+                    reason=str(parsed.get("reason") or ""),
+                    summary=str(parsed.get("summary") or ""),
+                    tags=[str(tag) for tag in parsed.get("tags") or []],
+                    **fields,
+                )
+                topic_ids = {topic.id for topic in profile.definition.topics} or None
+                return apply_rubric(result, rubric, topic_ids=topic_ids), ""
             result = ContentAnalysis.model_validate(parsed)
+        except RubricContractError as exc:
+            return None, str(exc)
         except ValidationError as exc:
             first_error = exc.errors(include_url=False)[0]
             location = ".".join(str(part) for part in first_error["loc"])

@@ -1,17 +1,23 @@
-name: Daily Horizon Summary
+name: AIM4R Research Radar
 
 on:
   schedule:
-    # GitHub scheduled workflows use UTC. 20:00 UTC is 04:00 Asia/Shanghai;
-    # this intentionally runs early to offset the observed schedule delay.
+    # Weekly, Sunday 23:00 UTC (Monday 07:00 Asia/Shanghai). The research
+    # config looks back one week (nine days for arXiv, to cover its
+    # announcement lag) and the history ledger removes items already handled,
+    # so a delayed run loses nothing and the overlap duplicates nothing.
     - cron: '0 23 * * 0'
   workflow_dispatch:      # Allow manual trigger
 
+concurrency:
+  group: aim4r-radar
+  cancel-in-progress: false
+
 jobs:
-  daily-summary:
+  research-radar:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Needed to commit changes
+      contents: write  # Needed to publish to gh-pages
 
     steps:
       - name: Checkout code
@@ -30,29 +36,41 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
-      - name: Prepare GitHub Actions config
-        run: cp data/config.github.json data/config.json
+      - name: Restore run history from gh-pages
+        # The ledger of seen items and run statuses lives next to the
+        # published site. A missing ledger (first run) starts empty.
+        run: |
+          mkdir -p docs/_data
+          if git fetch --depth=1 origin gh-pages \
+             && git show FETCH_HEAD:_data/aim4r_history.json > docs/_data/aim4r_history.json; then
+            echo "Restored history ledger."
+          else
+            rm -f docs/_data/aim4r_history.json
+            echo "No history ledger on gh-pages yet; starting fresh."
+          fi
 
-      - name: Run Horizon
+      - name: Run research radar
+        id: radar
         env:
-          # Map secrets to environment variables expected by config.json
-          # Modify these based on your data/config.github.json provider settings
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-          LWN_KEY: ${{ secrets.LWN_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: uv run horizon --hours 24
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run horizon --config data/config.material-intel.json
 
       - name: Set current date as environment variable
-        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        if: always()
+        run: echo "DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy edition and run status to GitHub Pages
+        # Runs after failures too, so the site shows "collection failed" or
+        # "processing failed" instead of silently showing nothing. A failed
+        # run writes no post, only its status. The job still fails, so the
+        # failure is also reported by GitHub.
+        if: always() && hashFiles('docs/_data/aim4r_history.json') != ''
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          keep_files: true  # Keep existing summaries on gh-pages branch
-          commit_message: "📝 Daily Summary: ${{ env.DATE }}"
+          keep_files: true  # Keep existing editions on gh-pages branch
+          commit_message: "Research radar: ${{ env.DATE }} (${{ steps.radar.outcome }})"
           publish_branch: gh-pages
           enable_jekyll: true

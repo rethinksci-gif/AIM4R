@@ -154,6 +154,15 @@ def item_context(
         else ""
     )
     comments = parts.comments[:2000] if include_content else ""
+    evidence = item.processing.evidence if item.processing else None
+    evidence_section = ""
+    if evidence is not None:
+        from ..evidence import evidence_prompt_block
+
+        evidence_section = (
+            "\n\n# Evidence record (shared by all language editions; the only allowed source of facts and numbers)\n\n"
+            + evidence_prompt_block(evidence)
+        )
     return f"""# Item
 
 Title: {item.title}
@@ -170,7 +179,7 @@ Tags: {', '.join(analysis.tags) if analysis else ""}
 
 # Community comments
 
-{comments or "No community comments available."}"""
+{comments or "No community comments available."}{evidence_section}"""
 
 
 def tool_results_text(results: list[ToolResult]) -> str:

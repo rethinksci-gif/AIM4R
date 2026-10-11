@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-11",
+  "preview_note": {
+    "zh": "本期由编辑（Claude）依据实际读到的原文手工撰写，用于检查新版结构与证据标注，未经过生产管线的模型筛选与生成。",
+    "en": "Hand-written by the editor (Claude) from the originals actually read, to review the new structure and evidence labels. Not produced by the production model pipeline."
+  },
+  "stats": {"fetched": 0, "new": 0, "screened": 0, "failed_sources": []},
+  "items": [
+    {
+      "url": "https://arxiv.org/abs/2610.06973v1",
+      "fulltext_url": "https://arxiv.org/html/2610.06973",
+      "title": "Event Cameras for Melt-Pool Monitoring in Additive Manufacturing: A Benchmark and a Cross-Machine Transfer Analysis",
+      "feed_name": "arXiv · Manufacturing process, inspection & sorting",
+      "published_at": "2026-10-03",
+      "source_kind": "preprint",
+      "role": "primary_evidence",
+      "peer_review": "preprint",
+      "analysis": {
+        "content_type": "preprint",
+        "topic": "data-trust",
+        "gates": {"domain_link": true, "new_information": true, "traceable": true},
+        "dimensions": {
+          "relevance": [8, "Directly tests whether a process-monitoring model learned the process or the instrument, the core cross-equipment question."],
+          "evidence": [8, "Full text read; pre-declared acceptance criteria, leave-one-source and leave-one-institution splits, multiple seeds; events are simulated."],
+          "transferability": [8, "The metadata-only lookup baseline transfers to any multi-site or multi-supplier dataset."],
+          "industrial": [5, "Real multi-lab AM video and NIST testbed builds, but no physical event camera and no production deployment."],
+          "novelty": [7, "First public multi-source event-camera benchmark for metal-AM melt pools, per the authors."]
+        }
+      },
+      "evidence": {
+        "material_system": "Metal additive manufacturing melt pools (LMD/DED and LPBF; alloys including 316L, IN718, IN625, Ti-6Al-4V) re-rendered as event-camera data",
+        "data_scale": "85 physics-calibrated event shards from 15 sources across 8 institutions",
+        "batches_or_lots": "15 sources resolve to 8 institutions; each contributing laboratory recorded one alloy with one camera band",
+        "conditions": "Events simulated with a calibrated v2e pipeline from public high-speed melt-pool video (Melt-Pool-Kinetics release)",
+        "baseline": "Dense-frame ResNet18 on the same frames; a content-blind camera-band majority-label lookup on identical folds",
+        "validation_method": "Leave-one-source-out (15 folds) and leave-one-institution-out (8 folds); hypotheses and acceptance criteria fixed before training; multiple seeds",
+        "validation_setting": "mixed",
+        "independent_replication": "not reported",
+        "event_date": "unknown",
+        "claims": [
+          {"claim": "Process-type classification passes the camera-identity trust test; material classification does not.", "quote": "process-type classification passes while material classification remains confounded by camera band", "location": "Abstract"},
+          {"claim": "For process type the metadata-only baseline is far below the trained model.", "quote": "the camera-band baseline drops to 0.443 while the trained SVM scores 0.967", "location": "§5.3"},
+          {"claim": "The event data are simulated from real video, not captured with an event camera.", "quote": "SynAM-E’s events are a calibrated re-rendering of real AM video, not a physical event-camera capture.", "location": "§6 Limitations"},
+          {"claim": "The event-versus-frame result is a single-machine sufficiency result.", "quote": "it establishes representational sufficiency, not cross-machine or on-DVS transfer", "location": "§6 Limitations"}
+        ],
+        "results": [
+          "Process type (leave-one-source-out): trained SVM 0.967 vs camera-band lookup 0.443 (uniform chance 0.50)",
+          "Material (three alloy classes): camera-band lookup 0.833 macro-F1, above BEC-SVM-AM 0.757, ResNet18-event 0.770 and a linear reference 0.799",
+          "Process type under leave-one-institution-out: weakest fold BAM 0.873",
+          "Single machine: event-spatial 0.874 vs dense frames 0.863 macro-F1"
+        ],
+        "limitations": [
+          "Events are re-rendered from real video, not physical event-camera captures",
+          "Event-vs-frame sufficiency shown on one machine only",
+          "Material scores are confounded because each lab supplied one alloy through one camera band",
+          "Energy figures are modeled, not measured"
+        ],
+        "reading_entry": "§5.3 and Table 3 (cross-site trust test), then §6 Limitations"
+      },
+      "artifacts": {
+        "zh": {
+          "title": "熔池监测跨设备基准暴露“相机混杂”",
+          "why_read": "它给出一个可复用的检查：只看采集元数据、不做训练的查表基线，能判断模型学到的是工艺还是设备。",
+          "advance": "作者把 8 个机构、15 个来源的熔池高速视频经校准仿真转成事件相机数据，发布 85 个分片和固定的跨机器评测划分，并为每个跨来源任务配了“信任测试”：一个只按相机波段给出多数标签、不看像素的基线，与训练模型在同一折上比较。",
+          "evidence": "已读全文；arXiv 预印本，未经同行评审；事件数据为仿真重渲染，标签来自真实视频。工艺类型分类通过测试：留一来源时训练模型为 0.967，波段查表基线仅 0.443；合金分类则被混杂，查表基线 0.833，高于所有训练模型（最好的线性参考为 0.799）。更严格的留一机构评测中，工艺分类最弱一折为 0.873。",
+          "significance": "材料数据里同样常见这种结构：供应商、批次和测试设备往往一一对应。编辑推断：在训练批次差异或分选模型之前，先用供应商、仪器、日期等元数据做一个查表基线；若它已接近模型分数，模型很可能学到的是来源而不是材料。",
+          "boundaries": "事件流不是实拍事件相机数据；“事件与帧精度相当”只在一台设备上成立；在每个实验室只提供一种合金、一种相机的数据结构下，材料分类结果无法解读，需要设备与材料交叉覆盖的数据。",
+          "next_step": "先读 §5.3 与表 3 的信任测试设计，再看 §6 的局限；数据与评测脚本已在 Zenodo 公开，可直接借用“元数据查表基线”的做法检查自有数据。"
+        },
+        "en": {
+          "title": "Melt-pool benchmark exposes camera confounding across machines",
+          "why_read": "It offers a reusable check: a no-training baseline that sees only acquisition metadata tells you whether a model learned the process or the instrument.",
+          "advance": "The authors re-render melt-pool video from 15 sources across 8 institutions into event-camera data, release 85 shards with fixed cross-machine splits, and pair every cross-source task with a trust test: a lookup that predicts the majority label per camera band without seeing pixels, scored on the same folds as the trained models.",
+          "evidence": "Full text read; arXiv preprint, not peer reviewed; events are simulated, labels come from real video. Process type passes: 0.967 for the trained model versus 0.443 for the band lookup under leave-one-source-out. Material is confounded: the lookup reaches 0.833, above every trained model (best, a linear reference, 0.799). Under stricter leave-one-institution-out, the weakest process fold is 0.873.",
+          "significance": "Materials data often have the same structure, with supplier, lot and test instrument moving together. Editor's inference: before training lot-drift or sorting models, score a lookup on metadata such as supplier, instrument and date; if it comes close to the model, the model probably learned the source rather than the material.",
+          "boundaries": "No physical event camera was used; the event-versus-frame parity holds on one machine only; with one alloy and one camera per lab, material scores cannot be interpreted until data cross instruments and materials.",
+          "next_step": "Read §5.3 and Table 3 for the trust-test design, then §6 for limits. Data and evaluation scripts are on Zenodo, so the metadata-lookup check can be reused on your own data."
+        }
+      }
+    },
+    {
+      "url": "https://www.nature.com/articles/s41524-026-02357-7",
+      "title": "Fragment-based representation learning for polymers and heterogeneous formulations",
+      "feed_name": "npj Computational Materials",
+      "published_at": "2026-10-08",
+      "source_kind": "journal",
+      "role": "primary_evidence",
+      "peer_review": "peer_reviewed",
+      "analysis": {
+        "content_type": "peer_reviewed_paper",
+        "topic": "ai-materials",
+        "gates": {"domain_link": true, "new_information": true, "traceable": true},
+        "dimensions": {
+          "relevance": [9, "Targets the gap between repeat-unit polymer representations and real multicomponent formulations."],
+          "evidence": [5, "Only the abstract was readable; it reports no dataset sizes, baselines or split design."],
+          "transferability": [7, "Fragment representations could carry to other formulation chemistries if validated."],
+          "industrial": [5, "Formulation-level inputs (polyester, epoxy, vitrimer) are closer to product development than homopolymer benchmarks."],
+          "novelty": [7, "Moves polymer property prediction beyond single repeat units."]
+        }
+      },
+      "evidence": {
+        "material_system": "Small molecules, linear homopolymers, and component-defined polyester, epoxy-resin and vitrimer formulations",
+        "data_scale": "not reported",
+        "batches_or_lots": "not reported",
+        "conditions": "not reported",
+        "baseline": "not reported",
+        "validation_method": "not reported",
+        "validation_setting": "not reported",
+        "independent_replication": "not reported",
+        "event_date": "unknown",
+        "claims": [
+          {"claim": "Most polymer ML models use idealized repeat-unit inputs, which do not fit real systems.", "quote": "most polymer machine-learning models still rely on idealized repeat-unit representations", "location": "Abstract"},
+          {"claim": "Fragment representations pretrained on small molecules are transferred to polymer property prediction.", "quote": "learns fragment-level representations from unlabeled small molecules through self-supervised pretraining and transfers them to downstream polymer property prediction", "location": "Abstract"},
+          {"claim": "The authors report strong performance on homopolymers and three formulation families, with motif-level attribution.", "quote": "support strong predictive performance for small molecules, linear homopolymers, and component-defined polyester, epoxy-resin, and vitrimer formulations", "location": "Abstract"}
+        ],
+        "results": ["Authors describe predictive performance as strong across small molecules, homopolymers and three formulation families; the abstract gives no figures"],
+        "limitations": [
+          "not addressed in the abstract: dataset sizes, comparison baselines, split design",
+          "not addressed in the abstract: whether processing history or batch information enters the representation",
+          "Full text not read: the article page served only the abstract"
+        ],
+        "reading_entry": ""
+      },
+      "artifacts": {
+        "zh": {
+          "title": "用化学片段表示聚合物配方",
+          "why_read": "它试图让同一套表示同时覆盖小分子、均聚物和多组分配方，正对“重复单元表示装不下真实配方”的问题。",
+          "advance": "作者提出 CGMNet：先在无标注小分子上自监督学习化学片段表示，再迁移到聚合物性能预测，并把输入从单一重复单元扩展到按组分定义的聚酯、环氧树脂和类玻璃高分子配方，同时可将预测归因到具体化学基团。",
+          "evidence": "仅读到摘要，期刊页面未提供正文；期刊论文，已同行评审。摘要称在小分子、线性均聚物和三类配方上预测性能“强”，但没有给出数据规模、比较基线或数据划分方式，本条均记为未报告。",
+          "boundaries": "仅凭摘要无法判断：配方数据集有多大、是否按配方或组分留出验证、能否外推到未见组分；摘要也未提及加工历史或批次信息是否进入输入。",
+          "next_step": "读正文时优先找三处：配方数据的来源与规模、与重复单元或描述符方法的对比、是否有按组分留出的测试。若成立，可在自有配方数据上做片段表示与现有描述符的小规模对照。"
+        },
+        "en": {
+          "title": "Chemical fragments as a representation for polymer formulations",
+          "why_read": "It tries to cover small molecules, homopolymers and multicomponent formulations with one representation, addressing the mismatch between repeat-unit inputs and real formulations.",
+          "advance": "The authors propose CGMNet: fragment representations learned by self-supervised pretraining on unlabeled small molecules, transferred to polymer property prediction, with inputs extended from a single repeat unit to component-defined polyester, epoxy-resin and vitrimer formulations, and predictions attributable to chemical motifs.",
+          "evidence": "Abstract only; the article page did not serve the full text. Peer-reviewed journal article. The abstract calls performance strong across small molecules, homopolymers and three formulation families but gives no dataset sizes, baselines or split design, so these are recorded as not reported.",
+          "boundaries": "From the abstract alone it is unclear how large the formulation datasets are, whether validation holds out formulations or components, and whether results extrapolate to unseen components; nor does it say whether processing history or batch information enters the inputs.",
+          "next_step": "In the full text, look for the source and size of the formulation data, the comparison with repeat-unit or descriptor methods, and any component-held-out test. If those hold, a small comparison against your current descriptors on in-house formulation data would be informative."
+        }
+      }
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.04134v1",
+      "fulltext_url": "https://arxiv.org/html/2610.04134",
+      "title": "Agentic Resource Allocation for Batch Multi-Objective Bayesian Optimization in Autonomous Materials Discovery",
+      "feed_name": "arXiv · Autonomous experiments & experiment design",
+      "published_at": "2026-10-02",
+      "source_kind": "preprint",
+      "role": "primary_evidence",
+      "peer_review": "preprint",
+      "analysis": {
+        "content_type": "preprint",
+        "topic": "lab-automation",
+        "gates": {"domain_link": true, "new_information": true, "traceable": true},
+        "dimensions": {
+          "relevance": [8, "Addresses how to reallocate exploration when budgets or timelines change in closed-loop materials campaigns."],
+          "evidence": [6, "Full text read; many seeds and event conditions, but every experiment is a noise-free proxy model."],
+          "transferability": [7, "The allocation layer is independent of the alloy systems and could sit on any batch BO loop."],
+          "industrial": [3, "Simulation only; no lab hardware, measurement noise or cost data."],
+          "novelty": [6, "Builds on LLM-as-controller BO work with explicit resource events."]
+        }
+      },
+      "evidence": {
+        "material_system": "Septenary refractory high-entropy alloys (Ti–V–Nb–Mo–Hf–Ta–W; melting temperature vs density) and Fe–Co–Ni-based soft magnetic alloys (saturation magnetization, coercivity, hardness)",
+        "data_scale": "Random Forest ground-truth models trained on 10^{4}–10^{5} compositions; hundreds of simulated campaigns",
+        "batches_or_lots": "not reported",
+        "conditions": "In silico: ground-truth models return objective values treated as exact measurements; LLM strategies use GPT-4o",
+        "baseline": "qEHVI (exploitation-focused) and a fixed mixed exploration/exploitation policy",
+        "validation_method": "Multi-seed simulated campaigns under baseline, budget-cut, timeline-cut and combined resource events",
+        "validation_setting": "simulation",
+        "independent_replication": "not reported",
+        "event_date": "unknown",
+        "claims": [
+          {"claim": "Experiments are simulated with proxy models treated as exact measurements.", "quote": "When the BO loop proposes a composition, the model returns objective values treated as exact experimental measurements.", "location": "§2.2"},
+          {"claim": "The adaptive policy gains information at small hypervolume cost on the RHEA baseline.", "quote": "accumulated approximately 37% more cumulative MI than qEHVI", "location": "§5 Conclusion"},
+          {"claim": "Whether the extra information improves downstream outcomes was not measured.", "quote": "was not directly measured here and remains an open question", "location": "§4 Discussion"}
+        ],
+        "results": [
+          "RHEA baseline: adaptive LLM policy about 37% more cumulative mutual information than qEHVI (19.54 vs 14.23 nats), within 0.2% in final hypervolume and 0.8% in AUC-HV",
+          "Fe-Co-Ni: about 49% more mutual information with no measurable optimization cost",
+          "RHEA with two resource cuts (campaign reduced to ten iterations in total): adaptive policy below both baselines in final hypervolume (0.9341 vs 0.9488 and 0.9486)"
+        ],
+        "limitations": [
+          "Simulation only: noise-free proxy models stand in for experiments",
+          "LLM agents saw only optimization statistics, no materials prior knowledge",
+          "Whether more mutual information improves Pareto-front prediction was not measured"
+        ],
+        "reading_entry": "§4 Discussion and Table 3 for the information-versus-convergence trade-off and the dual-event reversal"
+      },
+      "artifacts": {
+        "zh": {
+          "title": "让 LLM 调配批量贝叶斯优化的探索预算",
+          "why_read": "它量化了自驱实验中常被忽视的问题：预算或周期被压缩时，探索与利用应如何重新分配。",
+          "advance": "在多目标批量贝叶斯优化之上加一层资源分配决策：由 GPT-4o 根据超体积进展、互信息和剩余资源，逐轮决定每批探索候选的数量与强度，并与纯利用的 qEHVI 和固定混合策略比较。",
+          "evidence": "已读全文，但全部为仿真：随机森林代理模型充当实验，输出被当作无噪声的真实测量。高熵合金基线中，自适应策略的累计互信息比 qEHVI 高约 37%（19.54 对 14.23 nats），最终超体积相差在 0.2% 以内；Fe-Co-Ni 体系约高 49%。两次资源削减叠加、整个实验被压缩到总共十轮时，它的最终超体积反而低于两种基线（0.9341 对 0.9488）。",
+          "significance": "编辑推断：对预算可能被压缩的配方迭代项目，固定的探索计划最难调整；但这一点要先在含测量噪声的真实实验数据上复核，才能用于决策。",
+          "boundaries": "没有真实实验或测量噪声；作者明确未测量互信息增加是否带来更准的帕累托前沿预测；LLM 只看优化统计量，不含材料先验。",
+          "next_step": "代码、代理模型和全部 LLM 决策日志已公开。可先用自有历史数据替换代理模型，复现“固定混合与自适应”的对比，并加入测量噪声。"
+        },
+        "en": {
+          "title": "An LLM allocates exploration in batch Bayesian optimization",
+          "why_read": "It quantifies a question self-driving labs rarely address: how to re-split exploration and exploitation when budgets or timelines shrink.",
+          "advance": "A resource-allocation layer sits on top of batch multi-objective Bayesian optimization: GPT-4o reads hypervolume progress, mutual information and remaining resources and sets, each round, how many exploratory candidates go into the batch and how exploratory they are, compared against exploitation-only qEHVI and a fixed mixed policy.",
+          "evidence": "Full text read, but everything is simulated: Random Forest proxy models play the experiments and their outputs are treated as exact, noise-free measurements. On the high-entropy-alloy baseline the adaptive policy gains about 37% more cumulative mutual information than qEHVI (19.54 vs 14.23 nats) within 0.2% of its final hypervolume; on Fe-Co-Ni about 49%. When two resource cuts shrink the campaign to ten iterations in total, it ends below both baselines in final hypervolume (0.9341 vs 0.9488).",
+          "significance": "Editor's inference: in formulation programs where budgets can be cut mid-way, a fixed exploration schedule is the hardest to adjust; this needs checking on real, noisy experimental data before it guides decisions.",
+          "boundaries": "No real experiments or measurement noise; the authors did not measure whether extra mutual information yields better Pareto-front predictions; the LLM sees only optimization statistics, no materials prior.",
+          "next_step": "Code, proxy models and all LLM decision logs are public. Swap the proxy for your own historical data and rerun the fixed-versus-adaptive comparison with measurement noise added."
+        }
+      }
+    }
+  ]
+}

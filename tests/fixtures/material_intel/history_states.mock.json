@@ -1,0 +1,89 @@
+{
+ "version": 1,
+ "items": {},
+ "issues": {},
+ "runs": [
+  {
+   "date": "2026-10-11",
+   "run_at": "2026-10-11T22:05:00+00:00",
+   "status": "published_degraded",
+   "fetched": 40,
+   "new": 31,
+   "screened": 31,
+   "selected": 2,
+   "failed_sources": [
+    "MOCK Feed A"
+   ],
+   "note": "MOCK run record for UI tests only"
+  },
+  {
+   "date": "2026-10-10",
+   "run_at": "2026-10-10T22:05:00+00:00",
+   "status": "no_qualified",
+   "fetched": 40,
+   "new": 27,
+   "screened": 27,
+   "selected": 0,
+   "failed_sources": [],
+   "note": "MOCK run record for UI tests only"
+  },
+  {
+   "date": "2026-10-09",
+   "run_at": "2026-10-09T22:05:00+00:00",
+   "status": "source_failure",
+   "fetched": 40,
+   "new": 0,
+   "screened": 0,
+   "selected": 0,
+   "failed_sources": [
+    "MOCK Feed A",
+    "MOCK Feed B"
+   ],
+   "note": "MOCK run record for UI tests only"
+  },
+  {
+   "date": "2026-10-08",
+   "run_at": "2026-10-08T22:05:00+00:00",
+   "status": "processing_failure",
+   "fetched": 40,
+   "new": 18,
+   "screened": 18,
+   "selected": 0,
+   "failed_sources": [],
+   "note": "MOCK run record for UI tests only"
+  },
+  {
+   "date": "2026-10-07",
+   "run_at": "2026-10-07T22:05:00+00:00",
+   "status": "published",
+   "fetched": 40,
+   "new": 22,
+   "screened": 22,
+   "selected": 1,
+   "failed_sources": [],
+   "note": "MOCK run record for UI tests only"
+  },
+  {
+   "date": "2026-10-06",
+   "run_at": "2026-10-06T22:05:00+00:00",
+   "status": "no_new_items",
+   "fetched": 40,
+   "new": 0,
+   "screened": 0,
+   "selected": 0,
+   "failed_sources": [],
+   "note": "MOCK run record for UI tests only"
+  },
+  {
+   "date": "2026-10-06",
+   "run_at": "2026-10-06T22:05:00+00:00",
+   "status": "already_published",
+   "fetched": 40,
+   "new": 0,
+   "screened": 0,
+   "selected": 0,
+   "failed_sources": [],
+   "note": "MOCK run record for UI tests only"
+  }
+ ]
+}

@@ -1,0 +1,526 @@
+{
+  "ai": {
+    "provider": "deepseek",
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "temperature": 0.2,
+    "max_tokens": 8192,
+    "throttle_sec": 1,
+    "languages": [
+      "zh",
+      "en"
+    ],
+    "analysis_concurrency": 4,
+    "enrichment_concurrency": 2
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "material-intel",
+    "profile_settings": {
+      "material-intel": {
+        "threshold": 6.5,
+        "topic_dedup": true
+      }
+    }
+  },
+  "sources": {
+    "github": [
+      {
+        "type": "repo_releases",
+        "owner": "emdgroup",
+        "repo": "baybe",
+        "enabled": true,
+        "category": "transferable-methods",
+        "profile": "material-intel"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "meta-pytorch",
+        "repo": "botorch",
+        "enabled": true,
+        "category": "transferable-methods",
+        "profile": "material-intel"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "facebook",
+        "repo": "Ax",
+        "enabled": true,
+        "category": "transferable-methods",
+        "profile": "material-intel"
+      }
+    ],
+    "hackernews": {
+      "enabled": false
+    },
+    "reddit": {
+      "enabled": false
+    },
+    "telegram": {
+      "enabled": false
+    },
+    "rss": [
+      {
+        "name": "arXiv · AI for materials & polymers",
+        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acond-mat.mtrl-sci+OR+cat%3Acond-mat.soft+OR+cat%3Aphysics.chem-ph%29+AND+%28abs%3A%22machine+learning%22+OR+abs%3A%22active+learning%22+OR+abs%3A%22Bayesian+optimization%22+OR+abs%3A%22surrogate+model%22+OR+abs%3A%22deep+learning%22%29+AND+%28abs%3Apolymer+OR+abs%3Aformulation+OR+abs%3Acomposite+OR+abs%3Aexperimental+OR+abs%3Aprocessing+OR+abs%3Arecycl%2A%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
+        "category": "ai-materials",
+        "role": "primary_evidence",
+        "source_kind": "preprint",
+        "peer_review": "preprint",
+        "lookback_hours": 216,
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "arXiv · Autonomous experiments & experiment design",
+        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acond-mat.mtrl-sci+OR+cat%3Aphysics.chem-ph+OR+cat%3Acond-mat.soft+OR+cat%3Acs.LG+OR+cat%3Acs.RO+OR+cat%3Astat.ML%29+AND+%28abs%3Aautonomous+OR+abs%3A%22closed-loop%22+OR+abs%3A%22Bayesian+optimization%22+OR+abs%3A%22active+learning%22+OR+abs%3A%22design+of+experiments%22%29+AND+%28abs%3Asynthesis+OR+abs%3Alaboratory+OR+abs%3Aexperiments+OR+abs%3Amaterials%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
+        "category": "lab-automation",
+        "role": "primary_evidence",
+        "source_kind": "preprint",
+        "peer_review": "preprint",
+        "lookback_hours": 216,
+        "keyword_groups": [
+          [
+            "self-driving",
+            "autonomous lab",
+            "autonomous experiment",
+            "autonomous laborator",
+            "closed-loop",
+            "bayesian optimi",
+            "active learning",
+            "design of experiments",
+            "experimental design",
+            "robotic platform"
+          ],
+          [
+            "material",
+            "polymer",
+            "chemi",
+            "molecul",
+            "synthesis",
+            "formulation",
+            "catalys",
+            "alloy",
+            "crystal"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "arXiv · Manufacturing process, inspection & sorting",
+        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acs.LG+OR+cat%3Aeess.SY+OR+cat%3Acs.RO+OR+cat%3Acs.CV+OR+cat%3Aeess.SP+OR+cat%3Astat.AP%29+AND+%28abs%3A%22injection+molding%22+OR+abs%3Aextrusion+OR+abs%3A%22additive+manufacturing%22+OR+abs%3A%22process+monitoring%22+OR+abs%3A%22quality+control%22+OR+abs%3A%22plastic+sorting%22+OR+abs%3A%22waste+sorting%22+OR+abs%3A%22defect+detection%22+OR+abs%3A%22process+control%22%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
+        "category": "lab-automation",
+        "role": "primary_evidence",
+        "source_kind": "preprint",
+        "peer_review": "preprint",
+        "lookback_hours": 216,
+        "keyword_groups": [
+          [
+            "manufactur",
+            "injection mold",
+            "extrusion",
+            "additive",
+            "process monitor",
+            "quality control",
+            "defect",
+            "sorting",
+            "recycl",
+            "inspection",
+            "process control"
+          ],
+          [
+            "manufactur",
+            "material",
+            "polymer",
+            "plastic",
+            "industrial",
+            "factory",
+            "production line",
+            "recycl",
+            "weld",
+            "molding",
+            "extrusion",
+            "additive",
+            "machining"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "arXiv · Uncertainty, shift & provenance in materials/process data",
+        "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22uncertainty+quantification%22+OR+abs%3A%22distribution+shift%22+OR+abs%3A%22domain+shift%22+OR+abs%3A%22out-of-distribution%22+OR+abs%3Aprovenance+OR+abs%3A%22batch+effect%22%29+AND+%28abs%3Amaterials+OR+abs%3Apolymer+OR+abs%3Amanufacturing+OR+abs%3A%22process+data%22+OR+abs%3Achemistry%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
+        "category": "data-trust",
+        "role": "primary_evidence",
+        "source_kind": "preprint",
+        "peer_review": "preprint",
+        "lookback_hours": 216,
+        "keyword_groups": [
+          [
+            "material",
+            "polymer",
+            "manufactur",
+            "process data",
+            "chemi",
+            "alloy",
+            "molecul"
+          ],
+          [
+            "uncertaint",
+            "distribution shift",
+            "domain shift",
+            "out-of-distribution",
+            "provenance",
+            "batch effect",
+            "calibrat",
+            "extrapolat"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "npj Computational Materials",
+        "url": "https://www.nature.com/npjcompumats.rss",
+        "category": "ai-materials",
+        "role": "primary_evidence",
+        "source_kind": "journal",
+        "peer_review": "peer_reviewed",
+        "keyword_groups": [
+          [
+            "machine learning",
+            "learning",
+            "deep learning",
+            "neural",
+            "data-driven",
+            "bayesian",
+            "active learning",
+            "autonomous",
+            "self-driving",
+            "language model",
+            "llm",
+            "generative",
+            "surrogate",
+            "high-throughput",
+            "uncertainty",
+            "foundation model",
+            "graph network",
+            "reinforcement learning",
+            "polymer",
+            "experiment",
+            "formulation"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Nature Communications · Materials science",
+        "url": "https://www.nature.com/subjects/materials-science/ncomms.rss",
+        "category": "ai-materials",
+        "role": "primary_evidence",
+        "source_kind": "journal",
+        "peer_review": "peer_reviewed",
+        "keyword_groups": [
+          [
+            "machine learning",
+            "learning",
+            "deep learning",
+            "neural",
+            "data-driven",
+            "bayesian",
+            "active learning",
+            "autonomous",
+            "self-driving",
+            "language model",
+            "llm",
+            "generative",
+            "surrogate",
+            "high-throughput",
+            "uncertainty",
+            "foundation model",
+            "graph network",
+            "reinforcement learning",
+            "polymer recycl",
+            "plastic"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Nature Machine Intelligence",
+        "url": "https://www.nature.com/natmachintell.rss",
+        "category": "transferable-methods",
+        "role": "primary_evidence",
+        "source_kind": "journal",
+        "peer_review": "peer_reviewed",
+        "keyword_groups": [
+          [
+            "material",
+            "polymer",
+            "plastic",
+            "chemi",
+            "molecul",
+            "crystal",
+            "alloy",
+            "composite",
+            "catalys",
+            "formulation",
+            "recycl",
+            "manufactur",
+            "laborator",
+            "synthesis",
+            "experiment",
+            "process",
+            "scientific discovery",
+            "uncertainty"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Matter (Cell Press)",
+        "url": "https://www.cell.com/matter/inpress.rss",
+        "category": "ai-materials",
+        "role": "primary_evidence",
+        "source_kind": "journal",
+        "peer_review": "peer_reviewed",
+        "keyword_groups": [
+          [
+            "machine learning",
+            "learning",
+            "deep learning",
+            "neural",
+            "data-driven",
+            "bayesian",
+            "active learning",
+            "autonomous",
+            "self-driving",
+            "language model",
+            "llm",
+            "generative",
+            "surrogate",
+            "high-throughput",
+            "uncertainty",
+            "foundation model",
+            "graph network",
+            "reinforcement learning",
+            "recycl",
+            "upcycl"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Patterns (Cell Press)",
+        "url": "https://www.cell.com/patterns/inpress.rss",
+        "category": "data-trust",
+        "role": "primary_evidence",
+        "source_kind": "journal",
+        "peer_review": "peer_reviewed",
+        "keyword_groups": [
+          [
+            "material",
+            "polymer",
+            "plastic",
+            "chemi",
+            "molecul",
+            "crystal",
+            "alloy",
+            "composite",
+            "catalys",
+            "formulation",
+            "recycl",
+            "manufactur",
+            "laborator",
+            "synthesis",
+            "experiment",
+            "scientific data",
+            "provenance",
+            "uncertainty",
+            "anomaly"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "npj Materials Degradation",
+        "url": "https://www.nature.com/npjmatdeg.rss",
+        "category": "ai-materials",
+        "role": "primary_evidence",
+        "source_kind": "journal",
+        "peer_review": "peer_reviewed",
+        "keyword_groups": [
+          [
+            "polymer",
+            "plastic",
+            "recycl",
+            "machine learning",
+            "learning",
+            "data-driven",
+            "neural",
+            "prediction"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Microsoft Research Blog",
+        "url": "https://www.microsoft.com/en-us/research/feed/",
+        "category": "transferable-methods",
+        "role": "primary_evidence",
+        "source_kind": "lab_blog",
+        "peer_review": "not_applicable",
+        "keyword_groups": [
+          [
+            "material",
+            "chemi",
+            "molecul",
+            "polymer",
+            "manufactur",
+            "laborator",
+            "crystal",
+            "catalys",
+            "scientific discovery"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Google DeepMind Blog",
+        "url": "https://deepmind.google/blog/rss.xml",
+        "category": "transferable-methods",
+        "role": "primary_evidence",
+        "source_kind": "lab_blog",
+        "peer_review": "not_applicable",
+        "content_extractor": "trafilatura",
+        "keyword_groups": [
+          [
+            "material",
+            "chemi",
+            "molecul",
+            "polymer",
+            "manufactur",
+            "laborator",
+            "crystal",
+            "catalys",
+            "scientific discovery",
+            "for science"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "NIST News",
+        "url": "https://www.nist.gov/news-events/news/rss.xml",
+        "category": "data-trust",
+        "role": "primary_evidence",
+        "source_kind": "institutional",
+        "peer_review": "not_applicable",
+        "keyword_groups": [
+          [
+            "material",
+            "polymer",
+            "plastic",
+            "manufactur",
+            "recycl",
+            "chemi"
+          ],
+          [
+            "artificial intelligence",
+            "machine learning",
+            "learning",
+            "data",
+            "autonomous",
+            "automat",
+            "measurement",
+            "standard"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "The Robot Report",
+        "url": "https://www.therobotreport.com/feed/",
+        "category": "lab-automation",
+        "role": "discovery",
+        "source_kind": "trade_press",
+        "peer_review": "not_applicable",
+        "keyword_groups": [
+          [
+            "inspection",
+            "sorting",
+            "recycl",
+            "laborator",
+            "lab automation",
+            "quality control",
+            "machine tending",
+            "molding",
+            "plastic",
+            "materials handling",
+            "pharma",
+            "chemi"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      },
+      {
+        "name": "Plastics Today",
+        "url": "https://www.plasticstoday.com/rss.xml",
+        "category": "lab-automation",
+        "role": "discovery",
+        "source_kind": "trade_press",
+        "peer_review": "not_applicable",
+        "keyword_groups": [
+          [
+            "machine learning",
+            "learning",
+            "artificial intelligence",
+            "ai-",
+            " ai ",
+            "digital twin",
+            "process control",
+            "inspection",
+            "sorting",
+            "sensor",
+            "predictive",
+            "data",
+            "automation",
+            "simulation"
+          ]
+        ],
+        "enabled": true,
+        "profile": "material-intel"
+      }
+    ]
+  },
+  "collection": {
+    "time_window_hours": 168,
+    "history_path": "docs/_data/aim4r_history.json",
+    "history_retention_days": 120
+  },
+  "digest": {
+    "renderer": "research",
+    "max_items": null,
+    "track_limits": {
+      "main": 3,
+      "explore": 1
+    },
+    "deep_read_limit": 6,
+    "profile_order": [
+      "material-intel"
+    ]
+  },
+  "extractors": {}
+}
