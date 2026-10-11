@@ -765,3 +765,40 @@ def test_renderer_marks_abstract_only_and_escapes_untrusted_text():
     assert edition.front_matter["picks"][0]["access"] == "abstract_or_summary"
     assert edition.front_matter["picks"][0]["topic_name"] == "AI × 材料与聚合物研发"
     assert 'href="https://example.org/rpp"' in text
+
+
+def test_metadata_numbers_cannot_ground_performance_claims():
+    from src.models import ContentBlock
+
+    item = _item_with_record()
+    item.processing.evidence.access_note = "Fetched 98765 characters"
+    item.processing.evidence.checks["attempts"] = 54321
+    blocks = [ContentBlock(id="evidence", title="Evidence", content="Accuracy improved by 2026%, with 98765 samples and 54321 trials.")]
+    problems = " ".join(artifact_quality_problems("MOCK result", blocks, item, "en"))
+    assert all(number in problems for number in ("2026", "98765", "54321"))
+
+
+def test_valid_quote_does_not_ground_invented_claim_or_limitation_numbers():
+    item = make_item("MOCK study", "https://example.org/mock", content="The model was evaluated on held-out batches.")
+    record = build_evidence_record({
+        "claims": [{"claim": "Accuracy reached 99.99%", "quote": "The model was evaluated on held-out batches.", "location": "body"}],
+        "limitations": ["Only 98765 samples were tested", "not addressed: independent replication"],
+    }, item)
+    assert record.claims == []
+    assert record.limitations == ["not addressed: independent replication"]
+    assert record.checks["claims_dropped_ungrounded_numbers"] == 1
+    assert record.checks["limitations_dropped_ungrounded_numbers"] == 1
+
+
+@pytest.mark.parametrize("language,heading", [("zh", "本期阅读指南"), ("en", "Reading guide")])
+def test_reading_guide_links_match_cards_and_empty_editions_omit_guide(language, heading):
+    renderer = ResearchEditionRenderer(PROFILE.definition.topics)
+    main = _item_with_record()
+    explore = _item_with_record()
+    explore.processing.analysis.track = "explore"
+    edition = renderer.render([main, explore], "2026-10-11", language, EditionStats())
+    assert heading in edition.body
+    for pick in edition.front_matter["picks"]:
+        assert f'href="#{pick["anchor"]}"' in edition.body
+        assert f'id="{pick["anchor"]}"' in edition.body
+    assert 'class="reading-guide"' not in renderer.render([], "2026-10-11", language, EditionStats()).body

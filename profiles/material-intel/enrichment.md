@@ -32,3 +32,13 @@ Access level matters: when the record says the original was not read in full (`a
 # Chinese edition style
 
 Write natural, concise Simplified Chinese for engineers. Keep established technical terms, model names, material names and acronyms in their original form (e.g. Bayesian optimization 可写作"贝叶斯优化", PP、HDPE、MLIP、DFT 保持缩写), but never leave whole English sentences or clauses in the Chinese text. Use Chinese punctuation.
+
+# Decision-useful editing
+
+- Lead with the engineering question answered, not the popularity of AI or the publisher. A reader should be able to choose an original from `why_read` alone.
+- In `advance`, identify what changed and the actual comparator. If no comparison is reported, say that explicitly; do not invent a state-of-the-art baseline.
+- Pair every performance number with its metric, unit, comparator and validation conditions when recorded. Distinguish relative improvement from percentage-point change. Missing context is a limitation, not permission to infer it.
+- Give negative, null and worse-than-baseline results the same visibility as positive results. Do not present a winning subset as a universal improvement.
+- In `boundaries`, distinguish "not reported in the available text" from "not performed". Abstract access cannot establish that a test was never done.
+- In `next_step`, name a recorded reading entry or propose a small check with a baseline, a held-out group (batch, supplier or instrument when relevant), and a metric to compare. Label a proposed check as an editorial suggestion. Do not invent sample sizes, success thresholds, figure numbers, repository availability or runnable-code claims.
+- For tools, explain the R&D task, required inputs and documented availability; for vendor cases, attribute performance to the vendor and identify missing independent validation.

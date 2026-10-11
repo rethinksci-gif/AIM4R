@@ -35,3 +35,9 @@ Return valid JSON only:
   "limitations": ["..."],
   "reading_entry": "..."
 }
+
+Preserve decision-critical context:
+- Results must keep the metric name, unit, comparator and evaluation setting together. Record negative, null and worse-than-baseline findings, not only the best result.
+- Keep percentage changes distinct from percentage-point changes; do not calculate or convert either.
+- "Not reported in the supplied text" does not mean "not performed". Especially for abstracts, phrase gaps as unavailable information.
+- Claim text and limitations must also be grounded; a valid quote does not justify adding unsupported numbers to the claim attached to it.

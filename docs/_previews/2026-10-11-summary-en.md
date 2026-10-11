@@ -15,6 +15,8 @@ preview_note: "Hand-written by the editor (Claude) from the originals actually r
 
 <p class="issue-lede">Editorial preview: three real sources, written by the editor from the originals actually read.</p>
 
+<nav class="reading-guide" aria-labelledby="reading-guide-title"><h2 id="reading-guide-title">Reading guide</h2><p>Choose an original for your R&amp;D question; check its limits before planning a validation.</p><ol><li><a href="#pick-1">Chemical fragments as a representation for polymer formulations</a><span class="guide-context">AI × Materials &amp; Polymer R&amp;D · Abstract only</span><p>It tries to cover small molecules, homopolymers and multicomponent formulations with one representation, addressing the mismatch between repeat-unit inputs and real formulations.</p></li><li><a href="#pick-2">Melt-pool benchmark exposes camera confounding across machines</a><span class="guide-context">Data Context, Validation &amp; Trust · Full text read</span><p>It offers a reusable check: a no-training baseline that sees only acquisition metadata tells you whether a model learned the process or the instrument.</p></li><li><a href="#pick-3">An LLM allocates exploration in batch Bayesian optimization</a><span class="guide-context">Lab Automation &amp; Manufacturing Loops · Full text read · Exploration</span><p>It quantifies a question self-driving labs rarely address: how to re-split exploration and exploitation when budgets or timelines shrink.</p></li></ol></nav>
+
 <h2 id="topic-ai-materials">AI × Materials &amp; Polymer R&amp;D</h2>
 
 <article class="pick" id="pick-1" data-track="main">

@@ -30,6 +30,8 @@ LABELS: dict[str, dict[str, Any]] = {
         "fetched": "收录",
         "event": "事件日期",
         "why": "为什么值得读",
+        "reading_guide": "本期阅读指南",
+        "guide_note": "按研发问题选择原文；先看证据边界，再决定是否验证。",
         "evidence_record": "证据记录",
         "evidence_hint": "字段与摘录保留原文语言，按来源报告填写。",
         "quotes": "原文摘录",
@@ -106,6 +108,8 @@ LABELS: dict[str, dict[str, Any]] = {
         "fetched": "Collected",
         "event": "Event date",
         "why": "Why read it",
+        "reading_guide": "Reading guide",
+        "guide_note": "Choose an original for your R&D question; check its limits before planning a validation.",
         "evidence_record": "Evidence record",
         "evidence_hint": "Fields and excerpts are kept in the source language, as reported by the source.",
         "quotes": "Excerpts from the source",
@@ -293,6 +297,9 @@ class ResearchEditionRenderer:
                 parts.append(self._card(item, index, language))
                 picks.append(self._pick_summary(item, index, language))
 
+        if picks:
+            parts.insert(1, self._reading_guide(picks, language))
+
         front_matter = {
             "layout": "default",
             "title": title,
@@ -310,6 +317,24 @@ class ResearchEditionRenderer:
             normalize_language(json.dumps(front_matter, ensure_ascii=False), language)
         )
         return RenderedEdition(title=title, front_matter=front_matter, body=body)
+
+    def _reading_guide(self, picks: list[dict[str, Any]], language: str) -> str:
+        labels = LABELS.get(language, LABELS["en"])
+        rows = []
+        for pick in picks:
+            access = labels["access"].get(pick["access"], labels["unknown"])
+            track = f' · {labels["explore_heading"]}' if pick["track"] == "explore" else ""
+            rows.append(
+                f'<li><a href="#{_e(pick["anchor"])}">{_e(pick["title"])}</a>'
+                f'<span class="guide-context">{_e(pick["topic_name"])} · {_e(access + track)}</span>'
+                + (f'<p>{_e(pick["why"])}</p>' if pick["why"] else "")
+                + "</li>"
+            )
+        return (
+            '<nav class="reading-guide" aria-labelledby="reading-guide-title">'
+            f'<h2 id="reading-guide-title">{_e(labels["reading_guide"])}</h2>'
+            f'<p>{_e(labels["guide_note"])}</p><ol>' + "".join(rows) + "</ol></nav>"
+        )
 
     def _group_by_topic(
         self, items: list[ContentItem]
