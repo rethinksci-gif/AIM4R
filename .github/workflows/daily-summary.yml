@@ -2,11 +2,11 @@ name: AIM4R Research Radar
 
 on:
   schedule:
-    # Daily at 22:00 UTC (06:00 Asia/Shanghai). The research config looks
-    # back 48 hours (longer for arXiv and journals) and the history ledger
-    # removes items already handled, so a delayed or skipped run loses
-    # nothing and an overlapping run duplicates nothing.
-    - cron: '0 22 * * *'
+    # Weekly, Sunday 23:00 UTC (Monday 07:00 Asia/Shanghai). The research
+    # config looks back one week (nine days for arXiv, to cover its
+    # announcement lag) and the history ledger removes items already handled,
+    # so a delayed run loses nothing and the overlap duplicates nothing.
+    - cron: '0 23 * * 0'
   workflow_dispatch:      # Allow manual trigger
 
 concurrency:

@@ -63,23 +63,23 @@
     "rss": [
       {
         "name": "arXiv · AI for materials & polymers",
-        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acond-mat.mtrl-sci+OR+cat%3Acond-mat.soft+OR+cat%3Aphysics.chem-ph%29+AND+%28abs%3A%22machine+learning%22+OR+abs%3A%22active+learning%22+OR+abs%3A%22Bayesian+optimization%22+OR+abs%3A%22surrogate+model%22+OR+abs%3A%22deep+learning%22%29+AND+%28abs%3Apolymer+OR+abs%3Aformulation+OR+abs%3Acomposite+OR+abs%3Aexperimental+OR+abs%3Aprocessing+OR+abs%3Arecycl%2A%29&sortBy=submittedDate&sortOrder=descending&max_results=60",
+        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acond-mat.mtrl-sci+OR+cat%3Acond-mat.soft+OR+cat%3Aphysics.chem-ph%29+AND+%28abs%3A%22machine+learning%22+OR+abs%3A%22active+learning%22+OR+abs%3A%22Bayesian+optimization%22+OR+abs%3A%22surrogate+model%22+OR+abs%3A%22deep+learning%22%29+AND+%28abs%3Apolymer+OR+abs%3Aformulation+OR+abs%3Acomposite+OR+abs%3Aexperimental+OR+abs%3Aprocessing+OR+abs%3Arecycl%2A%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
         "category": "ai-materials",
         "role": "primary_evidence",
         "source_kind": "preprint",
         "peer_review": "preprint",
-        "lookback_hours": 120,
+        "lookback_hours": 216,
         "enabled": true,
         "profile": "material-intel"
       },
       {
         "name": "arXiv · Autonomous experiments & experiment design",
-        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acond-mat.mtrl-sci+OR+cat%3Aphysics.chem-ph+OR+cat%3Acond-mat.soft+OR+cat%3Acs.LG+OR+cat%3Acs.RO+OR+cat%3Astat.ML%29+AND+%28abs%3Aautonomous+OR+abs%3A%22closed-loop%22+OR+abs%3A%22Bayesian+optimization%22+OR+abs%3A%22active+learning%22+OR+abs%3A%22design+of+experiments%22%29+AND+%28abs%3Asynthesis+OR+abs%3Alaboratory+OR+abs%3Aexperiments+OR+abs%3Amaterials%29&sortBy=submittedDate&sortOrder=descending&max_results=60",
+        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acond-mat.mtrl-sci+OR+cat%3Aphysics.chem-ph+OR+cat%3Acond-mat.soft+OR+cat%3Acs.LG+OR+cat%3Acs.RO+OR+cat%3Astat.ML%29+AND+%28abs%3Aautonomous+OR+abs%3A%22closed-loop%22+OR+abs%3A%22Bayesian+optimization%22+OR+abs%3A%22active+learning%22+OR+abs%3A%22design+of+experiments%22%29+AND+%28abs%3Asynthesis+OR+abs%3Alaboratory+OR+abs%3Aexperiments+OR+abs%3Amaterials%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
         "category": "lab-automation",
         "role": "primary_evidence",
         "source_kind": "preprint",
         "peer_review": "preprint",
-        "lookback_hours": 120,
+        "lookback_hours": 216,
         "keyword_groups": [
           [
             "self-driving",
@@ -110,12 +110,12 @@
       },
       {
         "name": "arXiv · Manufacturing process, inspection & sorting",
-        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acs.LG+OR+cat%3Aeess.SY+OR+cat%3Acs.RO+OR+cat%3Acs.CV+OR+cat%3Aeess.SP+OR+cat%3Astat.AP%29+AND+%28abs%3A%22injection+molding%22+OR+abs%3Aextrusion+OR+abs%3A%22additive+manufacturing%22+OR+abs%3A%22process+monitoring%22+OR+abs%3A%22quality+control%22+OR+abs%3A%22plastic+sorting%22+OR+abs%3A%22waste+sorting%22+OR+abs%3A%22defect+detection%22+OR+abs%3A%22process+control%22%29&sortBy=submittedDate&sortOrder=descending&max_results=60",
+        "url": "https://export.arxiv.org/api/query?search_query=%28cat%3Acs.LG+OR+cat%3Aeess.SY+OR+cat%3Acs.RO+OR+cat%3Acs.CV+OR+cat%3Aeess.SP+OR+cat%3Astat.AP%29+AND+%28abs%3A%22injection+molding%22+OR+abs%3Aextrusion+OR+abs%3A%22additive+manufacturing%22+OR+abs%3A%22process+monitoring%22+OR+abs%3A%22quality+control%22+OR+abs%3A%22plastic+sorting%22+OR+abs%3A%22waste+sorting%22+OR+abs%3A%22defect+detection%22+OR+abs%3A%22process+control%22%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
         "category": "lab-automation",
         "role": "primary_evidence",
         "source_kind": "preprint",
         "peer_review": "preprint",
-        "lookback_hours": 120,
+        "lookback_hours": 216,
         "keyword_groups": [
           [
             "manufactur",
@@ -151,12 +151,12 @@
       },
       {
         "name": "arXiv · Uncertainty, shift & provenance in materials/process data",
-        "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22uncertainty+quantification%22+OR+abs%3A%22distribution+shift%22+OR+abs%3A%22domain+shift%22+OR+abs%3A%22out-of-distribution%22+OR+abs%3Aprovenance+OR+abs%3A%22batch+effect%22%29+AND+%28abs%3Amaterials+OR+abs%3Apolymer+OR+abs%3Amanufacturing+OR+abs%3A%22process+data%22+OR+abs%3Achemistry%29&sortBy=submittedDate&sortOrder=descending&max_results=60",
+        "url": "https://export.arxiv.org/api/query?search_query=%28abs%3A%22uncertainty+quantification%22+OR+abs%3A%22distribution+shift%22+OR+abs%3A%22domain+shift%22+OR+abs%3A%22out-of-distribution%22+OR+abs%3Aprovenance+OR+abs%3A%22batch+effect%22%29+AND+%28abs%3Amaterials+OR+abs%3Apolymer+OR+abs%3Amanufacturing+OR+abs%3A%22process+data%22+OR+abs%3Achemistry%29&sortBy=submittedDate&sortOrder=descending&max_results=200",
         "category": "data-trust",
         "role": "primary_evidence",
         "source_kind": "preprint",
         "peer_review": "preprint",
-        "lookback_hours": 120,
+        "lookback_hours": 216,
         "keyword_groups": [
           [
             "material",
@@ -188,7 +188,6 @@
         "role": "primary_evidence",
         "source_kind": "journal",
         "peer_review": "peer_reviewed",
-        "lookback_hours": 96,
         "keyword_groups": [
           [
             "machine learning",
@@ -224,7 +223,6 @@
         "role": "primary_evidence",
         "source_kind": "journal",
         "peer_review": "peer_reviewed",
-        "lookback_hours": 96,
         "keyword_groups": [
           [
             "machine learning",
@@ -259,7 +257,6 @@
         "role": "primary_evidence",
         "source_kind": "journal",
         "peer_review": "peer_reviewed",
-        "lookback_hours": 96,
         "keyword_groups": [
           [
             "material",
@@ -292,7 +289,6 @@
         "role": "primary_evidence",
         "source_kind": "journal",
         "peer_review": "peer_reviewed",
-        "lookback_hours": 96,
         "keyword_groups": [
           [
             "machine learning",
@@ -327,7 +323,6 @@
         "role": "primary_evidence",
         "source_kind": "journal",
         "peer_review": "peer_reviewed",
-        "lookback_hours": 96,
         "keyword_groups": [
           [
             "material",
@@ -361,7 +356,6 @@
         "role": "primary_evidence",
         "source_kind": "journal",
         "peer_review": "peer_reviewed",
-        "lookback_hours": 96,
         "keyword_groups": [
           [
             "polymer",
@@ -512,7 +506,7 @@
     ]
   },
   "collection": {
-    "time_window_hours": 48,
+    "time_window_hours": 168,
     "history_path": "docs/_data/aim4r_history.json",
     "history_retention_days": 120
   },
