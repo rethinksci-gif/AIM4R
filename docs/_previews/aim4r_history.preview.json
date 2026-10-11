@@ -1,0 +1,18 @@
+{
+ "version": 1,
+ "items": {},
+ "issues": {},
+ "runs": [
+  {
+   "date": "2026-10-11",
+   "run_at": "2026-10-11T00:00:00+00:00",
+   "status": "editorial_preview",
+   "fetched": 0,
+   "new": 0,
+   "screened": 0,
+   "selected": 3,
+   "failed_sources": [],
+   "note": "editorial preview built by scripts/build_preview_edition.py; not a production run"
+  }
+ ]
+}

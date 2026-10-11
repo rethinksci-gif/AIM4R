@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Horizon daily run + deploy to GitHub Pages
+# AIM4R research radar daily run + deploy to GitHub Pages
 # Usage: ./scripts/daily-run.sh
 # Cron:  0 8 * * * /path/to/horizon/scripts/daily-run.sh >> /path/to/horizon/logs/cron.log 2>&1
 
@@ -11,7 +11,7 @@ LOG_PREFIX="[$(date '+%Y-%m-%d %H:%M:%S')]"
 
 cd "$PROJECT_DIR"
 
-echo "$LOG_PREFIX Starting Horizon daily run..."
+echo "$LOG_PREFIX Starting AIM4R research radar run..."
 
 # 1. Pull latest code
 git pull --quiet origin main
@@ -19,8 +19,13 @@ git pull --quiet origin main
 # 2. Install/update dependencies
 uv sync --quiet
 
-# 3. Run Horizon
-uv run horizon --hours 24
+# 3. Restore the run-history ledger from gh-pages, then run the research radar.
+#    The config's 48h window plus the ledger replaces the old fixed --hours 24.
+mkdir -p docs/_data
+git fetch --quiet origin gh-pages
+git show origin/gh-pages:_data/aim4r_history.json > docs/_data/aim4r_history.json 2>/dev/null \
+    || rm -f docs/_data/aim4r_history.json
+uv run horizon --config data/config.material-intel.json
 
 # 4. Deploy docs to gh-pages
 echo "$LOG_PREFIX Deploying to gh-pages..."

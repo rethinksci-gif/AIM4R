@@ -17,9 +17,22 @@ _MARKDOWN_BLOCK_START = re.compile(r"(?m)^( {0,3})(>|[-+] |\d+[.)] )")
 _URL_SAFE_CHARS = ":/?#[]@!$&'*,;=~%+"
 
 
+def _decode_entities(value: object) -> str:
+    """Decode HTML entities, including double-encoded ones from feeds."""
+    text = str(value)
+    for _ in range(2):
+        decoded = html.unescape(text)
+        if decoded == text:
+            break
+        text = decoded
+    return text
+
+
 def _escape_markdown(value: object) -> str:
     """Render untrusted text literally while retaining its readable content."""
-    escaped = html.escape(str(value), quote=True)
+    # Apostrophes are left alone: html.escape would emit "&#x27;", whose "#"
+    # the Markdown escaping below turns into a visible "&\#x27;".
+    escaped = html.escape(_decode_entities(value), quote=False).replace('"', "&quot;")
     escaped = _MARKDOWN_SPECIAL.sub(r"\\\1", escaped)
     return _MARKDOWN_BLOCK_START.sub(r"\1\\\2", escaped)
 

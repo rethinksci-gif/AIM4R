@@ -109,6 +109,8 @@ class SourceFetchOutcome:
     status: Literal["success", "empty", "failure"]
     items: List[ContentItem] = field(default_factory=list)
     error: Optional[str] = None
+    # Sub-sources (e.g. individual RSS feeds) that failed while others worked.
+    failed_feeds: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, object]:
         result: Dict[str, object] = {
@@ -118,6 +120,8 @@ class SourceFetchOutcome:
         }
         if self.error is not None:
             result["error"] = self.error
+        if self.failed_feeds:
+            result["failed_feeds"] = list(self.failed_feeds)
         return result
 
 
@@ -144,6 +148,17 @@ class FetchReport:
     @property
     def all_failed(self) -> bool:
         return bool(self.outcomes) and self.failed_count == len(self.outcomes)
+
+    @property
+    def failed_source_names(self) -> List[str]:
+        """Every failed source or sub-source, for reader-facing status."""
+        names: List[str] = []
+        for outcome in self.outcomes:
+            if outcome.failed_feeds:
+                names.extend(outcome.failed_feeds)
+            elif outcome.status == "failure":
+                names.append(outcome.source_name)
+        return names
 
     def failure_message(self) -> str:
         failures = "; ".join(
@@ -226,6 +241,10 @@ class HorizonOrchestrator:
         self.console.print(
             f"[bold cyan]{self.icons['start']} Horizon - Starting aggregation...[/bold cyan]\n"
         )
+        digest = getattr(self.config, "digest", None)
+        if getattr(digest, "renderer", "daily") == "research":
+            await self._run_research(force_hours)
+            return
 
         # Check email subscriptions if configured
         if (
@@ -519,6 +538,21 @@ class HorizonOrchestrator:
             )
 
         self.console.print(f"   Found {len(items)} items from {name}")
+        failures = getattr(scraper, "source_failures", None)
+        if isinstance(failures, list) and failures:
+            for feed_name, error in failures:
+                self.console.print(f"[red]   Failed feed {feed_name}: {error}[/red]")
+            return SourceFetchOutcome(
+                source_name=name,
+                status=(
+                    "failure"
+                    if len(failures) >= (getattr(scraper, "attempted_feeds", 0) or len(failures))
+                    else "success" if items else "empty"
+                ),
+                items=items,
+                error="; ".join(f"{feed_name}: {error}" for feed_name, error in failures),
+                failed_feeds=[feed_name for feed_name, _ in failures],
+            )
 
         # Show per-sub-source breakdown when there are multiple sub-sources
         sub_counts: Dict[str, int] = defaultdict(int)
@@ -792,6 +826,7 @@ class HorizonOrchestrator:
         )
         candidates = initial.items
         await self._expand_twitter_discussion(candidates)
+        await self._deepen_candidates(candidates)
 
         # Targeted re-analysis can lower a score, so reapply profile filters.
         eligible = [
@@ -810,6 +845,7 @@ class HorizonOrchestrator:
             reverse=True,
         )
         balanced = self.apply_balanced_digest(eligible, log=log)
+        balanced.items = self.apply_track_limits(balanced.items)
         return FilteringPipelineResult(
             items=balanced.items,
             threshold_count=initial.threshold_count,
@@ -826,11 +862,20 @@ class HorizonOrchestrator:
     ) -> bool:
         if not item.processing or not item.processing.analysis:
             return False
+        if item.processing.analysis.track == "rejected":
+            return False
         profile_id = item.processing.classification.profile
         settings = self.config.processing.profile_settings.get(profile_id)
         effective_threshold = threshold
         if effective_threshold is None and settings is not None:
             effective_threshold = settings.threshold
+        if threshold is None and item.processing.analysis.track == "explore":
+            # The exploration track is defined by low industrial
+            # applicability, which the weighted total penalizes; the rubric
+            # gives it its own bar.
+            rubric = self.profiles.get(profile_id).definition.rubric
+            if rubric and rubric.explore and rubric.explore.min_total is not None:
+                effective_threshold = rubric.explore.min_total
         if effective_threshold is None:
             return True
         score = item.processing.analysis.score
@@ -951,6 +996,70 @@ class HorizonOrchestrator:
             group_limits=group_limits,
             duplicate_categories=sorted(set(duplicate_categories)),
         )
+
+    def apply_track_limits(self, items: List[ContentItem]) -> List[ContentItem]:
+        """Cap items per rubric track (main first, then exploration).
+
+        Caps are maxima, never quotas: a day with no qualifying item stays
+        empty instead of being filled with lower-scoring ones.
+        """
+        limits = self.config.digest.track_limits
+        if not limits:
+            return items
+        counts: Dict[str, int] = defaultdict(int)
+        kept: List[ContentItem] = []
+        for item in items:
+            analysis = item.processing.analysis if item.processing else None
+            track = (analysis.track if analysis and analysis.track else None) or "main"
+            if track not in limits or counts[track] >= limits[track]:
+                continue
+            counts[track] += 1
+            kept.append(item)
+        return sorted(kept, key=lambda item: item.processing.analysis.track == "explore")
+
+    def _evidence_profile(self, item: ContentItem):
+        if not item.processing:
+            return None
+        profile = self.profiles.get(item.processing.classification.profile)
+        return profile if profile.definition.evidence else None
+
+    async def _deepen_candidates(self, items: List[ContentItem]) -> None:
+        """Read the original page for top candidates of evidence profiles.
+
+        Only the shortlisted items (bounded by digest.deep_read_limit) are
+        fetched, and an item is re-analyzed only when more text was obtained,
+        so the light first pass keeps costs down while the final choice is
+        made on the fuller text.
+        """
+        limit = self.config.digest.deep_read_limit
+        targets = [
+            item
+            for item in items
+            if (profile := self._evidence_profile(item)) and profile.definition.evidence.deep_fetch
+        ][:limit]
+        if not targets:
+            return
+        from .ai.evidence import deep_read
+        from .extractors import ExtractorRegistry
+
+        self.console.print(
+            f"{self.icons['fetch']} Reading original pages for {len(targets)} candidates..."
+        )
+        registry = ExtractorRegistry(self.config.extractors)
+        improved = []
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            for item in targets:
+                try:
+                    if await deep_read(item, registry, client):
+                        improved.append(item)
+                except Exception as exc:
+                    item.metadata["access_note"] = f"original page fetch failed: {exc}"
+                note = item.metadata.get("access_note", "")
+                self.console.print(f"   [dim]{item.title[:70]} — {note[:90]}[/dim]")
+        if improved:
+            ai_client = create_ai_client(self.config.ai)
+            analyzer = ContentAnalyzer(ai_client, self.profiles, console=self.console)
+            await analyzer.analyze_batch(improved)
 
     async def _expand_twitter_discussion(self, items: List[ContentItem]) -> None:
         """Second-stage: fetch reply text for important Twitter items and re-analyze.
@@ -1086,3 +1195,200 @@ class HorizonOrchestrator:
         )
 
         return await summarizer.generate_summary(items, date, total_fetched, language=language)
+
+    async def _run_research(self, force_hours: Optional[int] = None) -> None:
+        """Run the evidence-first research edition.
+
+        Every run ends with exactly one recorded status, so readers can tell
+        "nothing qualified" from "sources failed" or "processing failed".
+        Publishing caps are maxima: an empty day publishes no post.
+        """
+        from .ai.evidence import EvidenceExtractor
+        from .ai.research_renderer import EditionStats, ResearchEditionRenderer
+        from .storage import history as run_history
+
+        history_path = self.config.collection.history_path
+        if not history_path:
+            raise ValueError("digest.renderer 'research' requires collection.history_path")
+        history = run_history.RunHistory(
+            Path(history_path), self.config.collection.history_retention_days
+        )
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        languages = list(self.config.ai.languages)
+
+        def finish(record: "run_history.RunRecord") -> None:
+            history.record_run(record)
+            history.save()
+            self.console.print(
+                f"{self.icons['save']} Run status: [bold]{record.status}[/bold] "
+                f"(fetched {record.fetched}, new {record.new}, screened {record.screened}, "
+                f"selected {record.selected})"
+            )
+
+        existing = history.issue(today)
+        if existing and existing.get("status") == run_history.PUBLISHED:
+            finish(
+                run_history.RunRecord(
+                    today,
+                    run_history.ALREADY_PUBLISHED,
+                    note="an issue for this date exists; new items wait for the next run",
+                )
+            )
+            return
+
+        since = self._determine_time_window(force_hours)
+        self.console.print(
+            f"{self.icons['date']} Fetching content since: {since.strftime('%Y-%m-%d %H:%M:%S')}\n"
+        )
+        all_items = await self.fetch_all_sources(since)
+        report = self.last_fetch_report
+        failed_sources = report.failed_source_names if report else []
+        if report and report.all_failed:
+            finish(
+                run_history.RunRecord(
+                    today,
+                    run_history.SOURCE_FAILURE,
+                    failed_sources=failed_sources,
+                    note=report.failure_message()[:500],
+                )
+            )
+            raise RuntimeError(report.failure_message())
+
+        merged = self.merge_cross_source_duplicates(all_items)
+        new_items, already_seen = history.split_unseen(merged)
+        self.console.print(
+            f"{self.icons['fetched']} {len(all_items)} fetched, {len(new_items)} new, "
+            f"{len(already_seen)} already handled in earlier runs\n"
+        )
+        stats = EditionStats(
+            fetched=len(all_items), new=len(new_items), failed_sources=failed_sources
+        )
+        if not new_items:
+            finish(
+                run_history.RunRecord(
+                    today,
+                    run_history.NO_NEW_ITEMS,
+                    fetched=len(all_items),
+                    failed_sources=failed_sources,
+                )
+            )
+            return
+
+        analyzed = await self.analyze_items(new_items)
+        failed_analysis = {
+            id(item)
+            for item in analyzed
+            if not item.processing
+            or not item.processing.analysis
+            or item.processing.analysis.score is None
+        }
+        screened = [item for item in analyzed if id(item) not in failed_analysis]
+        stats.screened = len(screened)
+        if len(failed_analysis) * 2 >= len(analyzed):
+            note = f"{len(failed_analysis)}/{len(analyzed)} analyses failed"
+            finish(
+                run_history.RunRecord(
+                    today,
+                    run_history.PROCESSING_FAILURE,
+                    fetched=len(all_items),
+                    new=len(new_items),
+                    screened=len(screened),
+                    failed_sources=failed_sources,
+                    note=note,
+                )
+            )
+            raise RuntimeError(f"AI processing failed: {note}")
+
+        candidates = (await self.select_digest_items(screened)).items
+        selected: List[ContentItem] = []
+        if candidates:
+            extractor = EvidenceExtractor(create_ai_client(self.config.ai))
+            with_evidence: List[ContentItem] = []
+            for item in candidates:
+                profile = self._evidence_profile(item)
+                try:
+                    if profile is not None:
+                        await extractor.extract(item, profile)
+                    with_evidence.append(item)
+                except Exception as exc:
+                    self.console.print(
+                        f"[yellow]{self.icons['warning']} Evidence extraction failed for "
+                        f"{item.title[:60]}: {exc}[/yellow]"
+                    )
+            enrichment = await self.enrich_items(with_evidence)
+            failed_ids = set(enrichment.failed_ids)
+            selected = [
+                item
+                for item in with_evidence
+                if item.id not in failed_ids
+                and item.processing
+                and all(language in item.processing.artifacts for language in languages)
+            ]
+            if not selected:
+                finish(
+                    run_history.RunRecord(
+                        today,
+                        run_history.PROCESSING_FAILURE,
+                        fetched=len(all_items),
+                        new=len(new_items),
+                        screened=len(screened),
+                        failed_sources=failed_sources,
+                        note=f"all {len(candidates)} selected candidates failed evidence or writing",
+                    )
+                )
+                raise RuntimeError("Every selected candidate failed evidence extraction or writing")
+
+        if selected:
+            status = (
+                run_history.PUBLISHED_DEGRADED if failed_sources else run_history.PUBLISHED
+            )
+            topics = []
+            for item in selected:
+                profile = self.profiles.get(item.processing.classification.profile)
+                topics.extend(t for t in profile.definition.topics if t not in topics)
+            renderer = ResearchEditionRenderer(topics)
+            posts_dir = Path("docs/_posts")
+            posts_dir.mkdir(parents=True, exist_ok=True)
+            for language in languages:
+                edition = renderer.render(selected, today, language, stats, status=status)
+                summary_path = self.storage.save_daily_summary(
+                    today, edition.body, language=language
+                )
+                post_path = safe_output_path(posts_dir, f"{today}-summary-{language}.md")
+                post_path.write_text(edition.post_text(), encoding="utf-8")
+                self.console.print(
+                    f"{self.icons['document']} Wrote {language.upper()} edition: "
+                    f"{post_path} (copy: {summary_path})"
+                )
+            history.record_issue(today, selected, languages)
+        else:
+            status = run_history.NO_QUALIFIED
+            self.console.print(
+                f"{self.icons['filter']} No item met the bar; no post is published for {today}."
+            )
+
+        # Candidates that failed evidence or writing stay unrecorded so a
+        # later run can retry them while they remain in the lookback window.
+        published_ids = {id(item) for item in selected}
+        retry_ids = {id(item) for item in candidates} - published_ids
+        history.record_items(
+            [
+                item
+                for item in screened
+                if id(item) not in published_ids and id(item) not in retry_ids
+            ],
+            "screened",
+            today,
+        )
+        history.record_items(selected, run_history.PUBLISHED, today)
+        finish(
+            run_history.RunRecord(
+                today,
+                status,
+                fetched=len(all_items),
+                new=len(new_items),
+                screened=len(screened),
+                selected=len(selected),
+                failed_sources=failed_sources,
+            )
+        )

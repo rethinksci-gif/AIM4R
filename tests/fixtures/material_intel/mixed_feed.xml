@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<channel><title>Mock mixed feed</title>
+<item>
+  <guid>mock-materials-1</guid>
+  <title>MOCK: Active learning cuts formulation trials for recycled polypropylene blends</title>
+  <link>https://example.org/mock/rpp-active-learning</link>
+  <pubDate>Fri, 09 Oct 2026 08:00:00 GMT</pubDate>
+  <description>Short teaser about polymer formulation.</description>
+  <content:encoded><![CDATA[<p>MOCK ARTICLE. We study recycled polypropylene (rPP) blends from three suppliers.</p>
+<h2>Methods</h2><p>An active learning loop with a Gaussian process surrogate proposed 48 formulations across 6 resin lots.</p>
+<h2>Results</h2><p>The loop reached the target melt flow index in 19 experiments versus 41 for a full factorial baseline.</p>
+<p>Don&#x27;t over-read this: validation used one extruder.</p>]]></content:encoded>
+</item>
+<item>
+  <guid>mock-generic-1</guid>
+  <title>Why don&amp;#x27;t more developers use the platform?</title>
+  <link>https://example.org/mock/frontend-frameworks</link>
+  <pubDate>Fri, 09 Oct 2026 09:00:00 GMT</pubDate>
+  <description>Frameworks versus native web APIs debate.</description>
+</item>
+<item>
+  <guid>mock-old-1</guid>
+  <title>MOCK: Old polymer machine learning post rediscovered</title>
+  <link>https://example.org/mock/old-post</link>
+  <pubDate>Mon, 01 Jun 2026 09:00:00 GMT</pubDate>
+  <description>Polymer machine learning, but published months ago.</description>
+</item>
+</channel></rss>

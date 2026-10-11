@@ -1,7 +1,8 @@
-# 我的新闻雷达
+# AIM4R · 材料研发研究雷达
 
-每日自动生成的具身智能、机器人与材料方向简报。
+AI for Materials R&D & Manufacturing：面向材料研发工程师的每日研究雷达。每天最多三条值得读的原文，标明证据范围与边界，没有合格内容时不凑数。
 
-📖 [在线阅读](https://rethinksci-gif.github.io/Horizon/)
+📖 [在线阅读](https://rethinksci-gif.github.io/AIM4R/) · [选题标准与信息源](https://rethinksci-gif.github.io/AIM4R/method.html)
 
-基于 [Horizon](https://github.com/Thysrael/Horizon) 构建（MIT License）。
+- 运行与维护：见 [AGENTS.md](AGENTS.md) 与 [design/material-intel-rollout.md](design/material-intel-rollout.md)
+- 基于 [Horizon](https://github.com/Thysrael/Horizon) 构建（MIT License）。

@@ -47,6 +47,8 @@ data/mcp-runs/
 data/x_cookies_*.json
 
 docs/_posts/*.md
+# Run-history ledger: restored from and published to gh-pages by the workflow
+docs/_data/aim4r_history.json
 
 # Logs
 logs/*.log

@@ -1,0 +1,82 @@
+---
+layout: "default"
+title: "AIM4R Research Radar · 2026-10-11"
+date: "2026-10-11"
+lang: "en"
+edition: "research-radar"
+issue_status: "editorial_preview"
+description: "Hand-written by the editor (Claude) from the originals actually read, to review the new structure and evidence labels. Not produced by the production model pipeline."
+picks_count: 3
+failed_sources: []
+picks: [{"anchor": "pick-1", "title": "Chemical fragments as a representation for polymer formulations", "why": "It tries to cover small molecules, homopolymers and multicomponent formulations with one representation, addressing the mismatch between repeat-unit inputs and real formulations.", "topic": "ai-materials", "topic_name": "AI × Materials & Polymer R&D", "track": "main", "source_kind": "journal", "access": "abstract_or_summary", "url": "https://www.nature.com/articles/s41524-026-02357-7"}, {"anchor": "pick-2", "title": "Melt-pool benchmark exposes camera confounding across machines", "why": "It offers a reusable check: a no-training baseline that sees only acquisition metadata tells you whether a model learned the process or the instrument.", "topic": "data-trust", "topic_name": "Data Context, Validation & Trust", "track": "main", "source_kind": "preprint", "access": "full_text", "url": "https://arxiv.org/abs/2610.06973v1"}, {"anchor": "pick-3", "title": "An LLM allocates exploration in batch Bayesian optimization", "why": "It quantifies a question self-driving labs rarely address: how to re-split exploration and exploitation when budgets or timelines shrink.", "topic": "lab-automation", "topic_name": "Lab Automation & Manufacturing Loops", "track": "explore", "source_kind": "preprint", "access": "full_text", "url": "https://arxiv.org/abs/2610.04134v1"}]
+preview: true
+preview_note: "Hand-written by the editor (Claude) from the originals actually read, to review the new structure and evidence labels. Not produced by the production model pipeline."
+---
+
+<p class="issue-lede">Editorial preview: three real sources, written by the editor from the originals actually read.</p>
+
+<h2 id="topic-ai-materials">AI × Materials &amp; Polymer R&amp;D</h2>
+
+<article class="pick" id="pick-1" data-track="main">
+<p class="pick-badges"><span class="badge" data-kind="kind" data-value="journal">Journal article</span><span class="badge" data-kind="access" data-value="abstract_or_summary">Abstract only</span><span class="badge" data-kind="review" data-value="peer_reviewed">Peer reviewed</span></p>
+<h3>Chemical fragments as a representation for polymer formulations</h3>
+<p class="pick-why"><span class="label">Why read it</span>It tries to cover small molecules, homopolymers and multicomponent formulations with one representation, addressing the mismatch between repeat-unit inputs and real formulations.</p>
+<p class="pick-actions"><a class="read-original" href="https://www.nature.com/articles/s41524-026-02357-7">Read the original ↗</a><span class="pick-meta">npj Computational Materials · Published 2026-10-08 · Collected 2026-10-11</span></p>
+<div class="pick-body">
+<h4 data-block="advance">What&#x27;s new</h4>
+<p>The authors propose CGMNet: fragment representations learned by self-supervised pretraining on unlabeled small molecules, transferred to polymer property prediction, with inputs extended from a single repeat unit to component-defined polyester, epoxy-resin and vitrimer formulations, and predictions attributable to chemical motifs.</p>
+<h4 data-block="evidence">Key evidence</h4>
+<p>Abstract only; the article page did not serve the full text. Peer-reviewed journal article. The abstract calls performance strong across small molecules, homopolymers and three formulation families but gives no dataset sizes, baselines or split design, so these are recorded as not reported.</p>
+<h4 data-block="boundaries">Limits</h4>
+<p>From the abstract alone it is unclear how large the formulation datasets are, whether validation holds out formulations or components, and whether results extrapolate to unseen components; nor does it say whether processing history or batch information enters the inputs.</p>
+<h4 data-block="next_step">Next step</h4>
+<p>In the full text, look for the source and size of the formulation data, the comparison with repeat-unit or descriptor methods, and any component-held-out test. If those hold, a small comparison against your current descriptors on in-house formulation data would be informative.</p>
+</div>
+<details class="pick-evidence"><summary>Evidence record</summary><p class="evidence-hint">Fields and excerpts are kept in the source language, as reported by the source.</p><dl><dt>Material system</dt><dd lang="en">Small molecules, linear homopolymers, and component-defined polyester, epoxy-resin and vitrimer formulations</dd><dt>Data scale</dt><dd class="missing">not reported</dd><dt>Batches / lots</dt><dd class="missing">not reported</dd><dt>Conditions</dt><dd class="missing">not reported</dd><dt>Baseline</dt><dd class="missing">not reported</dd><dt>Validation method</dt><dd class="missing">not reported</dd><dt>Validation setting</dt><dd class="missing">not reported</dd><dt>Independent replication</dt><dd class="missing">not reported</dd><dt>Event date</dt><dd class="missing">unknown</dd></dl><p class="evidence-sub">Excerpts from the source</p><ol class="quotes"><li><q lang="en">most polymer machine-learning models still rely on idealized repeat-unit representations</q> <span class="quote-loc" lang="en">— Abstract</span></li><li><q lang="en">learns fragment-level representations from unlabeled small molecules through self-supervised pretraining and transfers them to downstream polymer property prediction</q> <span class="quote-loc" lang="en">— Abstract</span></li><li><q lang="en">support strong predictive performance for small molecules, linear homopolymers, and component-defined polyester, epoxy-resin, and vitrimer formulations</q> <span class="quote-loc" lang="en">— Abstract</span></li></ol><p class="check-note">Automatic check (citation consistency, not fact verification): 3 excerpt(s) located in the text that was read.</p></details>
+</article>
+
+<h2 id="topic-data-trust">Data Context, Validation &amp; Trust</h2>
+
+<article class="pick" id="pick-2" data-track="main">
+<p class="pick-badges"><span class="badge" data-kind="kind" data-value="preprint">Preprint</span><span class="badge" data-kind="access" data-value="full_text">Full text read</span><span class="badge" data-kind="review" data-value="preprint">Not peer reviewed</span></p>
+<h3>Melt-pool benchmark exposes camera confounding across machines</h3>
+<p class="pick-why"><span class="label">Why read it</span>It offers a reusable check: a no-training baseline that sees only acquisition metadata tells you whether a model learned the process or the instrument.</p>
+<p class="pick-actions"><a class="read-original" href="https://arxiv.org/abs/2610.06973v1">Read the original ↗</a><a class="read-fulltext" href="https://arxiv.org/html/2610.06973">Full-text version read ↗</a><span class="pick-meta">arXiv · Manufacturing process, inspection &amp; sorting · Published 2026-10-03 · Collected 2026-10-11</span></p>
+<div class="pick-body">
+<h4 data-block="advance">What&#x27;s new</h4>
+<p>The authors re-render melt-pool video from 15 sources across 8 institutions into event-camera data, release 85 shards with fixed cross-machine splits, and pair every cross-source task with a trust test: a lookup that predicts the majority label per camera band without seeing pixels, scored on the same folds as the trained models.</p>
+<h4 data-block="evidence">Key evidence</h4>
+<p>Full text read; arXiv preprint, not peer reviewed; events are simulated, labels come from real video. Process type passes: 0.967 for the trained model versus 0.443 for the band lookup under leave-one-source-out. Material is confounded: the lookup reaches 0.833, above every trained model (best, a linear reference, 0.799). Under stricter leave-one-institution-out, the weakest process fold is 0.873.</p>
+<h4 data-block="significance">Why it matters for R&amp;D</h4>
+<p>Materials data often have the same structure, with supplier, lot and test instrument moving together. Editor&#x27;s inference: before training lot-drift or sorting models, score a lookup on metadata such as supplier, instrument and date; if it comes close to the model, the model probably learned the source rather than the material.</p>
+<h4 data-block="boundaries">Limits</h4>
+<p>No physical event camera was used; the event-versus-frame parity holds on one machine only; with one alloy and one camera per lab, material scores cannot be interpreted until data cross instruments and materials.</p>
+<h4 data-block="next_step">Next step</h4>
+<p>Read §5.3 and Table 3 for the trust-test design, then §6 for limits. Data and evaluation scripts are on Zenodo, so the metadata-lookup check can be reused on your own data.</p>
+</div>
+<details class="pick-evidence"><summary>Evidence record</summary><p class="evidence-hint">Fields and excerpts are kept in the source language, as reported by the source.</p><dl><dt>Material system</dt><dd lang="en">Metal additive manufacturing melt pools (LMD/DED and LPBF; alloys including 316L, IN718, IN625, Ti-6Al-4V) re-rendered as event-camera data</dd><dt>Data scale</dt><dd lang="en">85 physics-calibrated event shards from 15 sources across 8 institutions</dd><dt>Batches / lots</dt><dd lang="en">15 sources resolve to 8 institutions; each contributing laboratory recorded one alloy with one camera band</dd><dt>Conditions</dt><dd lang="en">Events simulated with a calibrated v2e pipeline from public high-speed melt-pool video (Melt-Pool-Kinetics release)</dd><dt>Baseline</dt><dd lang="en">Dense-frame ResNet18 on the same frames; a content-blind camera-band majority-label lookup on identical folds</dd><dt>Validation method</dt><dd lang="en">Leave-one-source-out (15 folds) and leave-one-institution-out (8 folds); hypotheses and acceptance criteria fixed before training; multiple seeds</dd><dt>Validation setting</dt><dd>Mixed</dd><dt>Independent replication</dt><dd class="missing">not reported</dd><dt>Event date</dt><dd class="missing">unknown</dd></dl><p class="evidence-sub">Excerpts from the source</p><ol class="quotes"><li><q lang="en">process-type classification passes while material classification remains confounded by camera band</q> <span class="quote-loc" lang="en">— Abstract</span></li><li><q lang="en">the camera-band baseline drops to 0.443 while the trained SVM scores 0.967</q> <span class="quote-loc" lang="en">— §5.3</span></li><li><q lang="en">SynAM-E’s events are a calibrated re-rendering of real AM video, not a physical event-camera capture.</q> <span class="quote-loc" lang="en">— §6 Limitations</span></li><li><q lang="en">it establishes representational sufficiency, not cross-machine or on-DVS transfer</q> <span class="quote-loc" lang="en">— §6 Limitations</span></li></ol><p class="check-note">Automatic check (citation consistency, not fact verification): 4 excerpt(s) located in the text that was read.</p></details>
+</article>
+
+<h2 id="explore">Exploration</h2>
+
+<p class="track-note">High research value, still far from industrial use.</p>
+
+<article class="pick" id="pick-3" data-track="explore">
+<p class="pick-badges"><span class="badge" data-kind="kind" data-value="preprint">Preprint</span><span class="badge" data-kind="access" data-value="full_text">Full text read</span><span class="badge" data-kind="review" data-value="preprint">Not peer reviewed</span></p>
+<h3>An LLM allocates exploration in batch Bayesian optimization</h3>
+<p class="pick-why"><span class="label">Why read it</span>It quantifies a question self-driving labs rarely address: how to re-split exploration and exploitation when budgets or timelines shrink.</p>
+<p class="pick-actions"><a class="read-original" href="https://arxiv.org/abs/2610.04134v1">Read the original ↗</a><a class="read-fulltext" href="https://arxiv.org/html/2610.04134">Full-text version read ↗</a><span class="pick-meta">arXiv · Autonomous experiments &amp; experiment design · Published 2026-10-02 · Collected 2026-10-11</span></p>
+<div class="pick-body">
+<h4 data-block="advance">What&#x27;s new</h4>
+<p>A resource-allocation layer sits on top of batch multi-objective Bayesian optimization: GPT-4o reads hypervolume progress, mutual information and remaining resources and sets, each round, how many exploratory candidates go into the batch and how exploratory they are, compared against exploitation-only qEHVI and a fixed mixed policy.</p>
+<h4 data-block="evidence">Key evidence</h4>
+<p>Full text read, but everything is simulated: Random Forest proxy models play the experiments and their outputs are treated as exact, noise-free measurements. On the high-entropy-alloy baseline the adaptive policy gains about 37% more cumulative mutual information than qEHVI (19.54 vs 14.23 nats) within 0.2% of its final hypervolume; on Fe-Co-Ni about 49%. When two resource cuts shrink the campaign to ten iterations in total, it ends below both baselines in final hypervolume (0.9341 vs 0.9488).</p>
+<h4 data-block="significance">Why it matters for R&amp;D</h4>
+<p>Editor&#x27;s inference: in formulation programs where budgets can be cut mid-way, a fixed exploration schedule is the hardest to adjust; this needs checking on real, noisy experimental data before it guides decisions.</p>
+<h4 data-block="boundaries">Limits</h4>
+<p>No real experiments or measurement noise; the authors did not measure whether extra mutual information yields better Pareto-front predictions; the LLM sees only optimization statistics, no materials prior.</p>
+<h4 data-block="next_step">Next step</h4>
+<p>Code, proxy models and all LLM decision logs are public. Swap the proxy for your own historical data and rerun the fixed-versus-adaptive comparison with measurement noise added.</p>
+</div>
+<details class="pick-evidence"><summary>Evidence record</summary><p class="evidence-hint">Fields and excerpts are kept in the source language, as reported by the source.</p><dl><dt>Material system</dt><dd lang="en">Septenary refractory high-entropy alloys (Ti–V–Nb–Mo–Hf–Ta–W; melting temperature vs density) and Fe–Co–Ni-based soft magnetic alloys (saturation magnetization, coercivity, hardness)</dd><dt>Data scale</dt><dd lang="en">Random Forest ground-truth models trained on 10^{4}–10^{5} compositions; hundreds of simulated campaigns</dd><dt>Batches / lots</dt><dd class="missing">not reported</dd><dt>Conditions</dt><dd lang="en">In silico: ground-truth models return objective values treated as exact measurements; LLM strategies use GPT-4o</dd><dt>Baseline</dt><dd lang="en">qEHVI (exploitation-focused) and a fixed mixed exploration/exploitation policy</dd><dt>Validation method</dt><dd lang="en">Multi-seed simulated campaigns under baseline, budget-cut, timeline-cut and combined resource events</dd><dt>Validation setting</dt><dd>Simulation</dd><dt>Independent replication</dt><dd class="missing">not reported</dd><dt>Event date</dt><dd class="missing">unknown</dd></dl><p class="evidence-sub">Excerpts from the source</p><ol class="quotes"><li><q lang="en">When the BO loop proposes a composition, the model returns objective values treated as exact experimental measurements.</q> <span class="quote-loc" lang="en">— §2.2</span></li><li><q lang="en">accumulated approximately 37% more cumulative MI than qEHVI</q> <span class="quote-loc" lang="en">— §5 Conclusion</span></li><li><q lang="en">was not directly measured here and remains an open question</q> <span class="quote-loc" lang="en">— §4 Discussion</span></li></ol><p class="check-note">Automatic check (citation consistency, not fact verification): 3 excerpt(s) located in the text that was read.</p></details>
+</article>

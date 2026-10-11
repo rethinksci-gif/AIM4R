@@ -1,0 +1,154 @@
+{
+  "id": "material-intel",
+  "name": "Material Intelligence Radar",
+  "display_names": {
+    "zh": "材料智能研究雷达"
+  },
+  "match": "match.md",
+  "analysis": "analysis.md",
+  "content": {
+    "analysis_max_chars": 6000,
+    "enrichment_max_chars": 24000,
+    "sampling": "head-middle-tail"
+  },
+  "rubric": {
+    "gates": [
+      {
+        "id": "domain_link",
+        "description": "The item concerns materials/polymer R&D, lab automation, manufacturing or recycling data, or presents a method whose transfer to materials R&D can be explained concretely (name the mechanism, not just 'could apply to materials'). Generic model launches, leaderboards, funding, finance, policy and front-end/software news fail unless the item itself reports a concrete R&D link."
+      },
+      {
+        "id": "new_information",
+        "description": "The item adds a new fact, method, result, dataset, tool release or substantive analysis. Re-reports, roundups, opinion without new evidence and announcements without technical content fail."
+      },
+      {
+        "id": "traceable",
+        "description": "The core claims can be traced to an original source (paper, preprint, code, dataset, technical report, first-party engineering write-up). Pure marketing, unattributed claims and reposts that do not identify the original fail."
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "relevance",
+        "weight": 0.3,
+        "min_score": 5,
+        "description": "How directly it helps materials R&D decisions: formulation, experiment design, property prediction, data context (batch, processing history, equipment, test conditions, provenance), robustness across batches/equipment/suppliers, uncertainty and failure detection, lab automation, process control, defect detection, sorting/recycling."
+      },
+      {
+        "id": "evidence",
+        "weight": 0.25,
+        "description": "Strength of evidence available in what was supplied, judged by content type: papers need materials/data scale, baselines and validation (held-out, cross-batch, experimental confirmation); industrial cases need named site/line, before-after metrics and period; tools need runnable code, docs and examples. Abstract-only access caps this at 6 unless the abstract itself reports baselines and validation."
+      },
+      {
+        "id": "transferability",
+        "weight": 0.2,
+        "description": "Whether the method can be carried to other materials, processes or labs, and how clearly the transfer conditions (data needs, instrumentation, assumptions) are stated."
+      },
+      {
+        "id": "industrial",
+        "weight": 0.15,
+        "description": "Closeness to industrial use: scale, real process data, cost/throughput/yield/cycle-time/stability constraints actually reported. Do not infer cost, carbon or yield effects that the item does not report."
+      },
+      {
+        "id": "novelty",
+        "weight": 0.1,
+        "description": "Information gain over well-known prior work or earlier coverage of the same work."
+      }
+    ],
+    "content_types": [
+      "peer_reviewed_paper",
+      "preprint",
+      "industrial_case",
+      "tool_release",
+      "dataset",
+      "technical_analysis",
+      "news",
+      "other"
+    ],
+    "explore": {
+      "dimension": "industrial",
+      "below": 4,
+      "min_total": 6.0
+    }
+  },
+  "topics": [
+    {
+      "id": "ai-materials",
+      "names": {
+        "zh": "AI × 材料与聚合物研发",
+        "en": "AI × Materials & Polymer R&D"
+      },
+      "description": "Formulation, property prediction, inverse design, polymer and recycled-plastic informatics.",
+      "target_share": 0.35
+    },
+    {
+      "id": "lab-automation",
+      "names": {
+        "zh": "实验自动化与制造闭环",
+        "en": "Lab Automation & Manufacturing Loops"
+      },
+      "description": "Active learning, Bayesian optimization, self-driving labs, process control, inspection, sorting.",
+      "target_share": 0.3
+    },
+    {
+      "id": "data-trust",
+      "names": {
+        "zh": "数据上下文、验证与可信决策",
+        "en": "Data Context, Validation & Trust"
+      },
+      "description": "Provenance, batch and process context, distribution shift, uncertainty, failure detection, validation design.",
+      "target_share": 0.2
+    },
+    {
+      "id": "transferable-methods",
+      "names": {
+        "zh": "可迁移方法与开源工具",
+        "en": "Transferable Methods & Open Tools"
+      },
+      "description": "Methods from other fields, open-source code and datasets, robotics with a clear lab or manufacturing link.",
+      "target_share": 0.15
+    }
+  ],
+  "evidence": {
+    "prompt": "evidence.md",
+    "max_chars": 30000,
+    "deep_fetch": true
+  },
+  "enrichment": {
+    "prompt": "enrichment.md",
+    "blocks": [
+      {
+        "id": "why_read",
+        "type": "section",
+        "tools": [],
+        "primary": true
+      },
+      {
+        "id": "advance",
+        "type": "section",
+        "tools": []
+      },
+      {
+        "id": "evidence",
+        "type": "section",
+        "tools": []
+      },
+      {
+        "id": "significance",
+        "type": "section",
+        "tools": [],
+        "optional": true
+      },
+      {
+        "id": "boundaries",
+        "type": "section",
+        "tools": []
+      },
+      {
+        "id": "next_step",
+        "type": "section",
+        "tools": [],
+        "optional": true
+      }
+    ]
+  }
+}

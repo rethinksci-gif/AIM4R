@@ -30,12 +30,77 @@ from .prompting.enrichment import (
 )
 from .utils import parse_json_response
 from ..models import ArtifactSource, ContentArtifact, ContentBlock, ContentItem
+from ..processing.evidence import (
+    dedupe_sentences,
+    dedupe_sources,
+    longest_latin_run_words,
+    ungrounded_numbers,
+)
 from ..processing.profiles import LoadedProfile, ProfileBlock, ProfileRegistry
 from ..processing.tools import ToolRegistry, ToolResult
 
 logger = logging.getLogger(__name__)
 
 ModelT = TypeVar("ModelT", bound=BaseModel)
+
+# Filler that adds no information; rejected for evidence-grounded profiles.
+BANNED_PHRASES = (
+    "有望赋能",
+    "赋能行业",
+    "推动智能化发展",
+    "具有重要意义",
+    "提供新思路",
+    "paves the way",
+    "game-changer",
+    "game changer",
+    "revolutionize",
+)
+# Longest run of Latin-script words tolerated inside Chinese prose (names,
+# model identifiers); anything longer is an untranslated clause.
+MAX_LATIN_RUN_WORDS_ZH = 6
+
+
+def artifact_quality_problems(
+    title: str,
+    blocks: list[ContentBlock],
+    item: ContentItem,
+    language: str,
+) -> list[str]:
+    """Deterministic checks for evidence-grounded writing.
+
+    Numbers must come from the shared evidence record (or the title and
+    dates), Chinese prose must not carry untranslated English clauses, and
+    filler phrases are rejected. These are consistency checks, not fact
+    verification.
+    """
+    evidence = item.processing.evidence if item.processing else None
+    if evidence is None:
+        return []
+    grounding = [
+        evidence.model_dump_json(exclude={"checks"}),
+        item.title,
+        item.published_at.date().isoformat(),
+    ]
+    problems = []
+    texts = [title] + [block.content for block in blocks] + [block.title for block in blocks]
+    combined = "\n".join(texts)
+    missing = ungrounded_numbers(combined, *grounding)
+    if missing:
+        problems.append(
+            "numbers not present in the evidence record: " + ", ".join(missing)
+            + ". Remove them or use only numbers from the evidence record"
+        )
+    lowered = combined.lower()
+    banned = [phrase for phrase in BANNED_PHRASES if phrase.lower() in lowered]
+    if banned:
+        problems.append("remove filler phrases: " + ", ".join(banned))
+    if language.lower().startswith("zh"):
+        for block in blocks:
+            if longest_latin_run_words(block.content) > MAX_LATIN_RUN_WORDS_ZH:
+                problems.append(
+                    f"block {block.id} contains an untranslated English clause; write it in Chinese"
+                )
+    return problems
 
 class ToolRequest(BaseModel):
     block_id: str
@@ -234,6 +299,11 @@ class ContentEnricher:
             for block in generated.blocks:
                 block.title = normalize_language(block.title, language)
                 block.content = normalize_language(block.content, language)
+            for block, content in zip(
+                generated.blocks,
+                dedupe_sentences(block.content for block in generated.blocks),
+            ):
+                block.content = content or block.content
             referenced = {
                 source_id
                 for block in generated.blocks
@@ -243,7 +313,14 @@ class ContentEnricher:
                 language=language,
                 title=generated.title,
                 blocks=generated.blocks,
-                sources=[source for source in sources.values() if source.id in referenced],
+                sources=dedupe_sources(
+                    [
+                        source.model_copy()
+                        for source in sources.values()
+                        if source.id in referenced
+                    ],
+                    str(item.url),
+                ),
             )
         item.processing.artifacts.update(artifacts)
 
@@ -343,6 +420,11 @@ class ContentEnricher:
                     raise ValueError(
                         "missing required blocks: " + ", ".join(sorted(missing))
                     )
+                problems = artifact_quality_problems(
+                    generated.title, generated.blocks, item, language
+                )
+                if problems:
+                    raise ValueError("; ".join(problems))
 
             generated = await self._complete_model(
                 GeneratedArtifact,

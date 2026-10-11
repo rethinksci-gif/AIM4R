@@ -35,8 +35,10 @@
     languageSections.forEach(function (section) { section.hidden = section.lang !== lang; });
     languageButtons.forEach(function (button) { button.setAttribute('aria-pressed', String(button.dataset.lang === lang)); });
     root.lang = lang === 'zh' ? 'zh-CN' : 'en';
-    document.querySelector('.site-masthead nav a').href = '#archive-' + lang;
-    document.querySelector('.site-masthead nav a:nth-child(2)').href = 'feed-' + lang + '.xml';
+    var archiveLink = document.querySelector('.site-masthead nav a[data-nav="archive"]');
+    var feedLink = document.querySelector('.site-masthead nav a[data-nav="feed"]');
+    if (archiveLink) archiveLink.href = '#archive-' + lang;
+    if (feedLink) feedLink.href = 'feed-' + lang + '.xml';
     try { localStorage.setItem('aim4r-lang', lang); } catch (_) {}
   }
   if (languageSections.length) {
