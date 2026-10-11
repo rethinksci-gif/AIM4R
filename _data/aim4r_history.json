@@ -1,0 +1,289 @@
+{
+ "issues": {
+  "2026-10-11": {
+   "items": [
+    "arxiv:2610.09837"
+   ],
+   "languages": [
+    "zh",
+    "en"
+   ],
+   "status": "published"
+  }
+ },
+ "items": {
+  "//www.plasticstoday.com/materials/dutch-ai-startup-polyscout-designs-custom-polymers-in-weeks": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-09",
+   "rejected_by": [
+    "gate:new_information",
+    "gate:traceable"
+   ],
+   "score": 2.8,
+   "status": "screened",
+   "title": "Dutch AI Startup polySCOUT Designs Custom Polymers in Weeks",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/materials/dutch-ai-startup-polyscout-designs-custom-polymers-in-weeks"
+  },
+  "//www.plasticstoday.com/packaging/emerson-showcases-advanced-packaging-automation-at-pack-expo": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-09",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 0.7,
+   "status": "screened",
+   "title": "Emerson Showcases Advanced Packaging Automation at Pack Expo",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/packaging/emerson-showcases-advanced-packaging-automation-at-pack-expo"
+  },
+  "//www.therobotreport.com/why-dexterity-is-physical-ai-real-bottleneck": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-10",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 2.1,
+   "status": "screened",
+   "title": "Why dexterity is physical AI’s real bottleneck",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/why-dexterity-is-physical-ai-real-bottleneck/"
+  },
+  "//www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-09",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 0.8,
+   "status": "screened",
+   "title": "Why humanoid robot demos still fail the generalization test",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/"
+  },
+  "arxiv:2610.08013": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-06",
+   "score": 5.6,
+   "status": "screened",
+   "title": "Defect-limited thermal transport in AlN using pretrained machine-learning interatomic potentials",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.08013v1"
+  },
+  "arxiv:2610.08040": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-06",
+   "score": 6.0,
+   "status": "screened",
+   "title": "Dynamic Kinetic Evaluation Favors Compositionally Diverse Multicomponent Alloy Nanoparticles for Hydrogen Evolution",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.08040v1"
+  },
+  "arxiv:2610.08291": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-06",
+   "score": 5.9,
+   "status": "screened",
+   "title": "Mechanical properties of V-4Ti-4Cr alloy from molecular dynamics with a neural-network potential",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.08291v1"
+  },
+  "arxiv:2610.08495": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-06",
+   "score": 4.9,
+   "status": "screened",
+   "title": "Information-Dense Synthesis for Molecular Discovery",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.08495v1"
+  },
+  "arxiv:2610.09126": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-06",
+   "score": 5.6,
+   "status": "screened",
+   "title": "Domain-informed Adaptive Sampling for Generalizable PINNs in Metal Additive Manufacturing via Conditional Flow Matching",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.09126v1"
+  },
+  "arxiv:2610.09388": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 5.5,
+   "status": "screened",
+   "title": "Bottom-Up Prediction of Amorphous Poly(1,3-dioxolane) using Ab Initio Reactive Machine-Learning Force Fields",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.09388v1"
+  },
+  "arxiv:2610.09498": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 5.2,
+   "status": "screened",
+   "title": "SpatialUQ: Post-Hoc Uncertainty Quantification from Spatial Consistency in Black-Box Vision Models",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.09498v1"
+  },
+  "arxiv:2610.09837": {
+   "first_seen": "2026-10-11",
+   "issue": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 7.5,
+   "status": "published",
+   "title": "Origins of Universal Machine Learning Force-Field Errors in Multicomponent Materials",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.09837v2"
+  },
+  "arxiv:2610.10140": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 4.2,
+   "status": "screened",
+   "title": "Progress and Prospect of AI in ARPES Workflow",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.10140v1"
+  },
+  "arxiv:2610.10298": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 6.3,
+   "status": "screened",
+   "title": "Physics-Aligned Electronic Ground-State Learning Improves Generalization",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.10298v1"
+  },
+  "arxiv:2610.10830": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 4.4,
+   "status": "screened",
+   "title": "Overcoming the limitations of body-ordered potentials for atomistic machine learning",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.10830v1"
+  },
+  "arxiv:2610.10891": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-07",
+   "score": 4.8,
+   "status": "screened",
+   "title": "Data driven screening of CaCu$_5$-type magnetic structures",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.10891v1"
+  },
+  "arxiv:2610.11246": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "score": 6.3,
+   "status": "screened",
+   "title": "Assessing the Reliability of Foundational Machine Learning Potentials for Evaluating the Veracity of the Crystallography Open Database",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.11246v1"
+  },
+  "arxiv:2610.11331": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "score": 5.8,
+   "status": "screened",
+   "title": "Data-Driven Variable-Exponent Analysis for Photoemission Yield Spectroscopy: An Autonomous Self-Diagnosing Framework Based on Integrated Residual Metrics",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.11331v1"
+  },
+  "arxiv:2610.11447": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.7,
+   "status": "screened",
+   "title": "Closed-loop evaluation of LLM agents for embedded software development",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.11447v1"
+  },
+  "arxiv:2610.11476": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "score": 5.6,
+   "status": "screened",
+   "title": "Generation, Accumulation, and Utilization of Data in the Automatically Controlled End-Station of a Soft X-ray Beamline",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.11476v1"
+  },
+  "arxiv:2610.11878": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Benchmarking Universal Machine-Learning Interatomic Potentials for Temperature-Dependent Elasticity of Binary and High-Entropy Refractory Carbides",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.11878v1"
+  },
+  "arxiv:2610.12151": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Specialized machine learning force fields for materials dynamics",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.12151v1"
+  },
+  "arxiv:2610.12226": {
+   "first_seen": "2026-10-11",
+   "last_seen": "2026-10-11",
+   "published_at": "2026-10-08",
+   "score": 5.4,
+   "status": "screened",
+   "title": "Stabilization of Unidirectional First-Order PDE-ODE Coupled Systems with Boundary and Distributed Input Delays",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.12226v1"
+  }
+ },
+ "runs": [
+  {
+   "date": "2026-10-11",
+   "failed_sources": [
+    "npj Computational Materials",
+    "Nature Communications · Materials science"
+   ],
+   "fetched": 23,
+   "new": 23,
+   "note": "",
+   "run_at": "2026-10-11T07:47:05+00:00",
+   "screened": 23,
+   "selected": 1,
+   "status": "published_degraded"
+  }
+ ],
+ "version": 1
+}

@@ -9,8 +9,8 @@
 <body class="{% if page.page_kind == 'home' %}home-page{% else %}reading-page{% endif %}">
   <a class="skip-link" href="#content">跳转正文 / Skip to content</a>
   <header class="site-masthead">
-    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="AIM4R 首页"><span class="brand-mark" aria-hidden="true">A<span>↗</span></span><span>AIM4R<span class="wordmark-sub">RESEARCH INTELLIGENCE / DAILY</span></span></a>
-    <nav aria-label="主导航 / Navigation"><a href="{{ '/' | relative_url }}#archive">日报 / Digest</a><a href="{{ '/feed-zh.xml' | relative_url }}">RSS ↗</a></nav>
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="AIM4R 首页"><span class="brand-mark" aria-hidden="true">A<span>↗</span></span><span>AIM4R<span class="wordmark-sub">AI FOR MATERIALS R&amp;D &amp; MANUFACTURING</span></span></a>
+    <nav aria-label="主导航 / Navigation"><a data-nav="archive" href="{{ '/' | relative_url }}#archive">期次 / Editions</a><a data-nav="method" href="{{ '/method.html' | relative_url }}">方法与来源 / Method</a><a data-nav="feed" href="{{ '/feed-zh.xml' | relative_url }}">RSS ↗</a></nav>
     {% if page.page_kind == 'home' %}
     <div class="language-switch" aria-label="Language"><button type="button" data-lang="zh" aria-pressed="true">中文</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
     {% else %}
@@ -23,9 +23,9 @@
   </header>
   <main id="content" class="main-content" tabindex="-1">
     {% if page.page_kind == 'home' %}{{ content }}{% else %}
-    <div class="article-shell"><aside class="article-sidebar"><a class="back-link" href="{{ '/' | relative_url }}#archive">← 日报首页 / All digests</a><nav class="article-toc" aria-label="文章目录 / Contents" hidden><p class="section-number">本页目录 / CONTENTS</p><ol></ol></nav></aside><article class="article-body"><header class="article-heading"><p class="eyebrow">AIM4R / {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% else %}REFERENCE{% endif %}</p><h1>{% if page.lang == 'zh' %}{{ page.title | replace: 'Horizon Summary:', 'AIM4R 日报 ·' | remove: '(ZH)' | escape }}{% else %}{{ page.title | replace: 'Horizon Summary:', 'AIM4R Digest ·' | remove: '(EN)' | escape }}{% endif %}</h1></header><div class="article-content">{{ content }}</div><a class="back-link article-end" href="{{ '/' | relative_url }}#archive">← 返回日报 / All digests</a></article></div>
+    <div class="article-shell"><aside class="article-sidebar"><a class="back-link" href="{{ '/' | relative_url }}#archive">← 首页 / Home</a><nav class="article-toc" aria-label="文章目录 / Contents" hidden><p class="section-number">本页目录 / CONTENTS</p><ol></ol></nav></aside><article class="article-body{% if page.edition == 'research-radar' %} research-edition{% endif %}">{% if page.preview %}<p class="preview-banner" role="note">{% if page.lang == 'en' %}EDITORIAL PREVIEW — not a published edition. {{ page.preview_note | escape }}{% else %}编辑预览 · 非正式发布。{{ page.preview_note | escape }}{% endif %}</p>{% endif %}<header class="article-heading"><p class="eyebrow">AIM4R / {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y.%m.%d' }}</time>{% else %}REFERENCE{% endif %}</p><h1>{% if page.lang == 'zh' %}{{ page.title | replace: 'Horizon Summary:', 'AIM4R 日报 ·' | remove: '(ZH)' | escape }}{% else %}{{ page.title | replace: 'Horizon Summary:', 'AIM4R Digest ·' | remove: '(EN)' | escape }}{% endif %}</h1></header><div class="article-content">{{ content }}</div><a class="back-link article-end" href="{{ '/' | relative_url }}#archive">← 返回首页 / Home</a></article></div>
     {% endif %}
   </main>
-  <footer class="signal-footer"><a href="{{ '/' | relative_url }}">AIM4R / 每日研究情报</a><span>机器人 · 具身智能 · 材料前沿</span><a href="https://github.com/rethinksci-gif/AIM4R">GitHub ↗</a></footer>
+  <footer class="signal-footer"><a href="{{ '/' | relative_url }}">AIM4R / 材料研发研究雷达</a><span>AI × 材料研发 · 实验自动化 · 数据可信 · 可迁移方法</span><a href="https://github.com/rethinksci-gif/AIM4R">GitHub ↗</a></footer>
 </body>
 </html>
