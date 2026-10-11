@@ -249,3 +249,11 @@ a, summary, select { -webkit-tap-highlight-color: transparent; }
 .method-page table { font-size: .8em; }
 @media(max-width: 900px) { .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .topic-column:nth-child(3) { padding-left: 0; border-left: 0; } .run-status { grid-template-columns: 1fr; } }
 @media(max-width: 560px) { .topic-grid { grid-template-columns: 1fr; } .topic-column + .topic-column { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } .pick-evidence dl { grid-template-columns: 1fr; } .pick-evidence dt { margin-top: 6px; } .read-original, .read-fulltext { width: 100%; text-align: center; } }
+
+.reading-guide { margin: 24px 0; padding: 18px 22px; background: var(--surface); border: 1px solid var(--line); }
+.reading-guide h2 { margin-top: 0; font-size: 1.1em; }
+.reading-guide ol { padding-left: 1.3em; }
+.reading-guide li { margin: 14px 0; }
+.reading-guide li a { font-weight: 600; }
+.reading-guide p { margin: 4px 0; font-size: .9em; }
+.guide-context { display: block; color: var(--muted); font-size: .8em; }
