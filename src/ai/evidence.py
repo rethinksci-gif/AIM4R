@@ -154,6 +154,7 @@ def build_evidence_record(
 
     claims = []
     quotes_dropped = 0
+    claims_dropped = 0
     for raw in parsed.get("claims") or []:
         if not isinstance(raw, dict) or not str(raw.get("claim", "")).strip():
             continue
@@ -165,6 +166,9 @@ def build_evidence_record(
         claim.quote_found = quote_in_source(claim.quote, source_text)
         if not claim.quote_found:
             quotes_dropped += 1
+            continue
+        if ungrounded_numbers(claim.claim, source_text):
+            claims_dropped += 1
             continue
         claims.append(claim)
 
@@ -179,7 +183,8 @@ def build_evidence_record(
             continue
         results.append(text)
 
-    limitations = [str(value).strip() for value in parsed.get("limitations") or [] if str(value).strip()]
+    raw_limitations = [str(value).strip() for value in parsed.get("limitations") or [] if str(value).strip()]
+    limitations = [value for value in raw_limitations if not ungrounded_numbers(value, source_text)]
 
     meta = item.metadata
     return EvidenceRecord(
@@ -198,6 +203,8 @@ def build_evidence_record(
             "kind": "citation_consistency",
             "quotes_kept": len(claims[:5]),
             "quotes_dropped": quotes_dropped,
+            "claims_dropped_ungrounded_numbers": claims_dropped,
+            "limitations_dropped_ungrounded_numbers": len(raw_limitations) - len(limitations),
             "results_dropped_ungrounded_numbers": results_dropped,
             "fields_dropped_ungrounded_numbers": dropped_fields,
         },

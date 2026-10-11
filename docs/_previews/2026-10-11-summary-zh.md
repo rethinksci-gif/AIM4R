@@ -15,6 +15,8 @@ preview_note: "本期由编辑（Claude）依据实际读到的原文手工撰�
 
 <p class="issue-lede">编辑预览：3 条真实来源，由编辑依据实际读到的原文撰写。</p>
 
+<nav class="reading-guide" aria-labelledby="reading-guide-title"><h2 id="reading-guide-title">本期阅读指南</h2><p>按研发问题选择原文；先看证据边界，再决定是否验证。</p><ol><li><a href="#pick-1">用化学片段表示聚合物配方</a><span class="guide-context">AI × 材料与聚合物研发 · 仅读到摘要</span><p>它试图让同一套表示同时覆盖小分子、均聚物和多组分配方，正对“重复单元表示装不下真实配方”的问题。</p></li><li><a href="#pick-2">熔池监测跨设备基准暴露“相机混杂”</a><span class="guide-context">数据上下文、验证与可信决策 · 已读全文</span><p>它给出一个可复用的检查：只看采集元数据、不做训练的查表基线，能判断模型学到的是工艺还是设备。</p></li><li><a href="#pick-3">让 LLM 调配批量贝叶斯优化的探索预算</a><span class="guide-context">实验自动化与制造闭环 · 已读全文 · 探索栏目</span><p>它量化了自驱实验中常被忽视的问题：预算或周期被压缩时，探索与利用应如何重新分配。</p></li></ol></nav>
+
 <h2 id="topic-ai-materials">AI × 材料与聚合物研发</h2>
 
 <article class="pick" id="pick-1" data-track="main">

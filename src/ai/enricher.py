@@ -68,8 +68,8 @@ def artifact_quality_problems(
 ) -> list[str]:
     """Deterministic checks for evidence-grounded writing.
 
-    Numbers must come from the shared evidence record (or the title and
-    dates), Chinese prose must not carry untranslated English clauses, and
+    Numbers must come from substantive fields in the shared evidence record
+    (or the source title), Chinese prose must not carry untranslated English clauses, and
     filler phrases are rejected. These are consistency checks, not fact
     verification.
     """
@@ -77,9 +77,13 @@ def artifact_quality_problems(
     if evidence is None:
         return []
     grounding = [
-        evidence.model_dump_json(exclude={"checks"}),
+        evidence.model_dump_json(include={
+            "material_system", "data_scale", "batches_or_lots", "conditions",
+            "baseline", "validation_method", "results", "limitations",
+            "reading_entry",
+        }),
+        json.dumps([{"claim": c.claim, "quote": c.quote} for c in evidence.claims]),
         item.title,
-        item.published_at.date().isoformat(),
     ]
     problems = []
     texts = [title] + [block.content for block in blocks] + [block.title for block in blocks]

@@ -90,6 +90,10 @@ async def build_item(spec: dict, profile, client, registry, fetch: bool, fetched
         dropped = record.checks.get("quotes_dropped") or 0
         if dropped:
             problems.append(f"{dropped} quote(s) not found in the text that was read")
+        if record.checks.get("claims_dropped_ungrounded_numbers"):
+            problems.append("a claim contains numbers not found in the text that was read")
+        if record.checks.get("limitations_dropped_ungrounded_numbers"):
+            problems.append("a limitation contains numbers not found in the text that was read")
         if record.checks.get("results_dropped_ungrounded_numbers"):
             problems.append("a result contains numbers not found in the text that was read")
         if record.checks.get("fields_dropped_ungrounded_numbers"):
