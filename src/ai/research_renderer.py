@@ -256,7 +256,9 @@ class ResearchEditionRenderer:
 
         lede = labels["lede"].format(selected=len(items), new=stats.new, fetched=stats.fetched)
         if explore:
-            lede += " " + labels["lede_explore"].format(explore=len(explore))
+            lede += ("" if language == "zh" else " ") + labels["lede_explore"].format(
+                explore=len(explore)
+            )
         if not items:
             lede = labels["empty"].format(screened=stats.screened)
 

@@ -161,7 +161,9 @@ def dedupe_sentences(blocks: Iterable[str]) -> list[str]:
     result = []
     for block in blocks:
         kept = []
-        for sentence in re.split(r"(?<=[。！？.!?])\s*", block):
+        # Split after CJK terminators, or after .!? only when whitespace
+        # follows, so decimals such as "1.81" are never broken apart.
+        for sentence in re.split(r"(?<=[。！？])\s*|(?<=[.!?])\s+", block):
             key = normalize_for_match(sentence)
             if not key:
                 continue

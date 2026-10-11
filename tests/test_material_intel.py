@@ -541,6 +541,14 @@ def test_duplicate_sentences_and_sources_are_removed():
     assert [(s.id, s.title) for s in sources] == [("1", "Why don’t more developers")]
 
 
+def test_sentence_dedupe_keeps_decimals_intact():
+    zh, en = dedupe_sentences(
+        ["比值 1.81–1.95，重叠度由 0.57 升至 0.84。", "Ratios of 1.81–1.95 (mean 19.1%). Next sentence."]
+    )
+    assert zh == "比值 1.81–1.95，重叠度由 0.57 升至 0.84。"
+    assert en == "Ratios of 1.81–1.95 (mean 19.1%). Next sentence."
+
+
 def test_apostrophes_do_not_leave_html_entity_residue():
     escaped = _escape_markdown("Why don&#x27;t devs use it? It's fine")
     assert "&#x27;" not in escaped and "&\\#x27;" not in escaped
