@@ -39,7 +39,7 @@ lang: zh
 | 工业适用性 | 15% | 只看来源报告的规模、过程数据和约束，不推算成本或碳排 |
 | 新增信息量 | 10% | 相对已知工作的增量 |
 
-加权分只用于内部排序。研究价值高但工业适用性低的内容进入**探索栏目**。每日主刊最多 3 条、探索最多 1 条，可以为零；没有合格内容时不发布当日期次，并在首页“最近运行状态”中显示“无合格内容”，与“采集失败”“处理失败”明确区分。
+加权分只用于内部排序。研究价值高但工业适用性低的内容进入**探索栏目**。每期主刊最多 3 条、探索最多 1 条，可以为零；没有合格内容时不发布当期，并在首页“最近运行状态”中显示“无合格内容”，与“采集失败”“处理失败”明确区分。
 
 ## 证据标注
 
@@ -55,13 +55,14 @@ lang: zh
 
 ## 运行节奏
 
-- 每天运行一次（UTC 22:00，北京时间次日 06:00），全局回看 48 小时，arXiv 等存在公告延迟的来源单独回看 96–120 小时。
+- 每周运行一次（周日 UTC 23:00，北京时间周一 07:00），回看过去 7 天；arXiv 因公告延迟单独回看 9 天，重叠部分由历史账本去重。
 - 跨期去重由历史账本完成：已发布或已筛查的条目不再重复出现；arXiv 不同版本视为同一篇。
 - 运行失败不写入账本，重跑会重新处理；同一天已发布后重跑不会覆盖当期内容。
+- 已知限制：部分 RSS 只保留最新若干条——npj Computational Materials 8 条（约 3–4 天）、The Robot Report 15 条、Nature Communications 材料科学 30 条，在一周窗口内都已满额，每周采集可能漏掉更早的条目。
 
 ## 信息源
 
-以下来源均于 2026-10-11 用 `scripts/check_sources.py` 实测（HTTP、解析、日期、正文长度、关键词过滤后的数量、原文可读性）。“过滤后/周”为最近 7 天通过主题关键词预筛的条目数。
+以下来源均于 2026-10-11 用 `scripts/check_sources.py` 实测（HTTP、解析、日期、正文长度、关键词过滤后的数量、原文可读性）。“过滤后/周”为最近 7 天通过主题关键词预筛的条目数，即一期周报的大致输入量。
 
 | 来源 | 角色 | 主题 | 内容获取 | 过滤后/周 | 限制 |
 | --- | --- | --- | --- | --- | --- |
@@ -101,6 +102,6 @@ lang: zh
 
 ## In English (short)
 
-AIM4R is a research radar for materials R&D engineers: at most three picks per day (plus one exploration pick), zero on quiet days. Items pass three admission gates (domain link or explainable transfer, new information, traceable to an original), then five weighted dimensions (relevance 30% with a non-compensable floor, evidence 25%, transferability 20%, industrial applicability 15%, novelty 10%). Each pick carries one evidence record shared by both languages, with access level determined by code (full text vs. abstract only), source type, peer-review status, validation setting and replication recorded separately, and "not reported" where the source is silent. Automatic checks are citation-consistency checks (excerpts and numbers traceable to the text that was read), not fact-checking. Sources and candidates are listed above with their verification results.
+AIM4R is a research radar for materials R&D engineers: a weekly edition with at most three picks (plus one exploration pick), zero in quiet weeks. Items pass three admission gates (domain link or explainable transfer, new information, traceable to an original), then five weighted dimensions (relevance 30% with a non-compensable floor, evidence 25%, transferability 20%, industrial applicability 15%, novelty 10%). Each pick carries one evidence record shared by both languages, with access level determined by code (full text vs. abstract only), source type, peer-review status, validation setting and replication recorded separately, and "not reported" where the source is silent. Automatic checks are citation-consistency checks (excerpts and numbers traceable to the text that was read), not fact-checking. Sources and candidates are listed above with their verification results.
 
 </div>

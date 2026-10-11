@@ -18,10 +18,10 @@ description: AI for Materials R&D & Manufacturing — 面向材料研发工程�
       <p class="eyebrow"><span class="live-dot"></span> AIM4R / AI FOR MATERIALS R&amp;D &amp; MANUFACTURING</p>
       {% if language == 'zh' %}
       <h1>材料研发的 AI 研究雷达。<br><span>先看证据，再谈意义。</span></h1>
-      <p class="hero-copy">每天从论文、预印本、研究机构和工业来源中筛选最多三条值得读的原文，说明它新增了什么、证据成立在什么材料和条件上、哪里还没有被证明，以及下一步可以验证什么。没有合格内容的日子不凑数。</p>
+      <p class="hero-copy">每周从论文、预印本、研究机构和工业来源中筛选最多三条值得读的原文，说明它新增了什么、证据成立在什么材料和条件上、哪里还没有被证明，以及下一步可以验证什么。没有合格内容的一周不凑数。</p>
       {% else %}
       <h1>An AI research radar for materials R&amp;D.<br><span>Evidence first, significance second.</span></h1>
-      <p class="hero-copy">Each day, at most three originals worth reading — from papers, preprints, research labs and industry — with what is new, which materials and conditions the evidence covers, what is not yet shown, and what to verify next. Quiet days stay empty.</p>
+      <p class="hero-copy">Each week, at most three originals worth reading — from papers, preprints, research labs and industry — with what is new, which materials and conditions the evidence covers, what is not yet shown, and what to verify next. Quiet weeks stay empty.</p>
       {% endif %}
       <ul class="topic-strip" aria-label="{% if language == 'zh' %}关注方向{% else %}Coverage{% endif %}">
         {% if language == 'zh' %}
