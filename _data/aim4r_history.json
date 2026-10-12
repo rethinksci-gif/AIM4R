@@ -9,9 +9,35 @@
     "en"
    ],
    "status": "published"
+  },
+  "2026-10-12": {
+   "items": [
+    "arxiv:2610.12766"
+   ],
+   "languages": [
+    "zh",
+    "en"
+   ],
+   "status": "published"
   }
  },
  "items": {
+  "//www.plasticstoday.com/automation/kuka-expands-european-reach-through-td-synnex": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-07",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 0.7,
+   "status": "screened",
+   "title": "Kuka Expands European Reach Through TD Synnex",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/automation/kuka-expands-european-reach-through-td-synnex"
+  },
   "//www.plasticstoday.com/materials/dutch-ai-startup-polyscout-designs-custom-polymers-in-weeks": {
    "first_seen": "2026-10-11",
    "last_seen": "2026-10-11",
@@ -41,6 +67,34 @@
    "title": "Emerson Showcases Advanced Packaging Automation at Pack Expo",
    "track": "rejected",
    "url": "https://www.plasticstoday.com/packaging/emerson-showcases-advanced-packaging-automation-at-pack-expo"
+  },
+  "//www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-06",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 0.6,
+   "status": "screened",
+   "title": "Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/"
+  },
+  "//www.therobotreport.com/pegasus-1-6-brings-video-understanding-physical-ai-says-twelvelabs": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-06",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 2.8,
+   "status": "screened",
+   "title": "Pegasus 1.6 brings video understanding to physical AI, says TwelveLabs",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/pegasus-1-6-brings-video-understanding-physical-ai-says-twelvelabs/"
   },
   "//www.therobotreport.com/why-dexterity-is-physical-ai-real-bottleneck": {
    "first_seen": "2026-10-11",
@@ -72,6 +126,111 @@
    "title": "Why humanoid robot demos still fail the generalization test",
    "track": "rejected",
    "url": "https://www.therobotreport.com/why-humanoid-robot-demos-still-fail-the-generalization-test/"
+  },
+  "//www.therobotreport.com/will-boring-robots-win-in-the-real-world-why-robotic-form-should-follow-workflow": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-11",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 3.0,
+   "status": "screened",
+   "title": "Will ‘boring’ robots win in the real world? Why robotic form should follow workflow",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/will-boring-robots-win-in-the-real-world-why-robotic-form-should-follow-workflow/"
+  },
+  "arxiv:2610.04392": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-03",
+   "score": 6.0,
+   "status": "screened",
+   "title": "Detecting Defects that Matter: An Application-Driven Benchmark for Anomaly Detection in Manufacturing and Retail Logistics (VAND 4.0 Challenge)",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.04392v1"
+  },
+  "arxiv:2610.04689": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-03",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.4,
+   "status": "screened",
+   "title": "Neuroll: Real-Time Neural Strand-Based Hair Simulation via Simulator-in-the-Loop Unrolling",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.04689v2"
+  },
+  "arxiv:2610.05031": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-04",
+   "score": 6.4,
+   "status": "screened",
+   "title": "When LLMs Sit Above Diagnostic Tools: Unrealized Complementarity in Industrial Fault Diagnosis",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.05031v2"
+  },
+  "arxiv:2610.05899": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-05",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 3.1,
+   "status": "screened",
+   "title": "LoDEOT: Low-Dimensional and Efficient Offset Tokens for Building Footprint Extraction from Off-Nadir Imagery",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.05899v2"
+  },
+  "arxiv:2610.06158": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-05",
+   "score": 4.8,
+   "status": "screened",
+   "title": "Compressed magnetic Moment Tensor Potentials via low-rank matrix and tensor factorizations",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.06158v1"
+  },
+  "arxiv:2610.06248": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-05",
+   "score": 5.7,
+   "status": "screened",
+   "title": "From Papers to Mechanisms: An Evidence-Grounded Knowledge Substrate for Scientific Language Models",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.06248v1"
+  },
+  "arxiv:2610.06270": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-05",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.2,
+   "status": "screened",
+   "title": "DPNL: A DPLL-based Algorithm for Probabilistic Neurosymbolic Learning",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.06270v1"
+  },
+  "arxiv:2610.06467": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-05",
+   "score": 5.7,
+   "status": "screened",
+   "title": "Quantum spectral thermodynamics and active learning enable million-scale exploration of high-entropy ceramics",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.06467v1"
   },
   "arxiv:2610.08013": {
    "first_seen": "2026-10-11",
@@ -112,6 +271,16 @@
    "title": "Information-Dense Synthesis for Molecular Discovery",
    "track": "main",
    "url": "https://arxiv.org/abs/2610.08495v1"
+  },
+  "arxiv:2610.08852": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-03",
+   "score": 5.8,
+   "status": "screened",
+   "title": "Autonomous Droplet Navigation via Model-Based Reinforcement Learning: Zero-Shot Transfer and Emergent Dynamics",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.08852v1"
   },
   "arxiv:2610.09126": {
    "first_seen": "2026-10-11",
@@ -267,9 +436,100 @@
    "title": "Stabilization of Unidirectional First-Order PDE-ODE Coupled Systems with Boundary and Distributed Input Delays",
    "track": "main",
    "url": "https://arxiv.org/abs/2610.12226v1"
+  },
+  "arxiv:2610.12694": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-08",
+   "score": 5.8,
+   "status": "screened",
+   "title": "Critical Mass: Structure-Disjoint Splits Drift With the Libraries They Are Built On",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.12694v1"
+  },
+  "arxiv:2610.12696": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-08",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 3.7,
+   "status": "screened",
+   "title": "Spa-Bench: A Real-Robot Benchmark for Spatial Grounding in Vision-Language-Action Models",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.12696v1"
+  },
+  "arxiv:2610.12739": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-08",
+   "score": 4.6,
+   "status": "screened",
+   "title": "Predictive Synthesis of MOFs and COFs",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.12739v1"
+  },
+  "arxiv:2610.12766": {
+   "first_seen": "2026-10-12",
+   "issue": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-08",
+   "score": 7.0,
+   "status": "published",
+   "title": "Provenance-grouped protocol for evaluating machine learning in perovskite photovoltaics",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.12766v1"
+  },
+  "arxiv:2610.13265": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-09",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Quantitative modeling of acid-base equilibria",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.13265v1"
+  },
+  "arxiv:2610.13643": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-09",
+   "score": 4.4,
+   "status": "screened",
+   "title": "AutoBio+: Benchmarking Dexterous Manipulation with Dynamic Experimental Phenomena in Realistic Laboratories",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.13643v1"
+  },
+  "arxiv:2610.13795": {
+   "first_seen": "2026-10-12",
+   "last_seen": "2026-10-12",
+   "published_at": "2026-10-09",
+   "score": 6.2,
+   "status": "screened",
+   "title": "Improved screening of doped ZrO$_2$ catalysts for CO$_2$ hydrogenation from graph-based machine learning",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.13795v1"
   }
  },
  "runs": [
+  {
+   "date": "2026-10-12",
+   "failed_sources": [
+    "npj Computational Materials",
+    "Nature Communications · Materials science",
+    "Nature Machine Intelligence",
+    "npj Materials Degradation"
+   ],
+   "fetched": 45,
+   "new": 21,
+   "note": "",
+   "run_at": "2026-10-12T02:11:31+00:00",
+   "screened": 21,
+   "selected": 1,
+   "status": "published_degraded"
+  },
   {
    "date": "2026-10-11",
    "failed_sources": [
