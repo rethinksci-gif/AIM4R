@@ -30,6 +30,17 @@
     "en"
    ],
    "status": "published"
+  },
+  "2026-10-26": {
+   "items": [
+    "arxiv:2610.27859",
+    "arxiv:2610.28363"
+   ],
+   "languages": [
+    "zh",
+    "en"
+   ],
+   "status": "published"
   }
  },
  "items": {
@@ -42,6 +53,35 @@
    "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
    "track": "main",
    "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/"
+  },
+  "//www.microsoft.com/en-us/research/blog/solving-a-31-year-old-grand-challenge-in-mathematics-the-kls-conjecture": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 3.3,
+   "status": "screened",
+   "title": "Solving a 31-year-old grand challenge in mathematics – the KLS conjecture",
+   "track": "rejected",
+   "url": "https://www.microsoft.com/en-us/research/blog/solving-a-31-year-old-grand-challenge-in-mathematics-the-kls-conjecture/"
+  },
+  "//www.microsoft.com/en-us/research/podcast/called-to-serve-tech-research-and-positive-impact-with-chris-white": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-20",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 1.0,
+   "status": "screened",
+   "title": "Called to serve: Tech, research, and positive impact",
+   "track": "rejected",
+   "url": "https://www.microsoft.com/en-us/research/podcast/called-to-serve-tech-research-and-positive-impact-with-chris-white/"
   },
   "//www.nature.com/articles/s41529-026-00896-4": {
    "first_seen": "2026-10-19",
@@ -57,6 +97,19 @@
    "track": "rejected",
    "url": "https://www.nature.com/articles/s41529-026-00896-4"
   },
+  "//www.nature.com/articles/s42256-026-01316-7": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-20",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 3.8,
+   "status": "screened",
+   "title": "Lagrangian–Eulerian learning of flow field and trajectories with TrajectoryFlowNet",
+   "track": "rejected",
+   "url": "https://www.nature.com/articles/s42256-026-01316-7"
+  },
   "//www.nature.com/articles/s42256-026-01325-6": {
    "first_seen": "2026-10-19",
    "last_seen": "2026-10-19",
@@ -70,6 +123,26 @@
    "title": "Large-scale iontronic skins with neural-hierarchical processing architecture",
    "track": "rejected",
    "url": "https://www.nature.com/articles/s42256-026-01325-6"
+  },
+  "//www.nature.com/articles/s42256-026-01326-5": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-23",
+   "score": 6.0,
+   "status": "screened",
+   "title": "Efficient equivariant framework for universal charge density prediction",
+   "track": "explore",
+   "url": "https://www.nature.com/articles/s42256-026-01326-5"
+  },
+  "//www.nature.com/articles/s42256-026-01331-8": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-23",
+   "score": 4.6,
+   "status": "screened",
+   "title": "Guidelines for evaluating structure-based methods for protein–ligand binding prediction",
+   "track": "main",
+   "url": "https://www.nature.com/articles/s42256-026-01331-8"
   },
   "//www.plasticstoday.com/automation/kuka-expands-european-reach-through-td-synnex": {
    "first_seen": "2026-10-12",
@@ -86,6 +159,20 @@
    "title": "Kuka Expands European Reach Through TD Synnex",
    "track": "rejected",
    "url": "https://www.plasticstoday.com/automation/kuka-expands-european-reach-through-td-synnex"
+  },
+  "//www.plasticstoday.com/automation/why-automation-demand-is-rising-as-factories-downsize": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "rejected_by": [
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 2.0,
+   "status": "screened",
+   "title": "Why Automation Demand Is Rising as Factories Downsize",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/automation/why-automation-demand-is-rising-as-factories-downsize"
   },
   "//www.plasticstoday.com/industry-trends/fakuma-round-table-charts-path-to-resilient-growth": {
    "first_seen": "2026-10-19",
@@ -197,6 +284,38 @@
    "track": "rejected",
    "url": "https://www.plasticstoday.com/packaging/emerson-showcases-advanced-packaging-automation-at-pack-expo"
   },
+  "//www.plasticstoday.com/packaging/pack-expo-draws-record-crowds-to-chicago": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 1.2,
+   "status": "screened",
+   "title": "Pack Expo Draws Record Crowds to Chicago",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/packaging/pack-expo-draws-record-crowds-to-chicago"
+  },
+  "//www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 1.2,
+   "status": "screened",
+   "title": "AGCO to deploy Agility Digit humanoid in Kansas factory",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/"
+  },
   "//www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo": {
    "first_seen": "2026-10-12",
    "last_seen": "2026-10-12",
@@ -211,6 +330,37 @@
    "title": "Boston Dynamics appoints former Amazon exec Rohit Prasad as new CEO",
    "track": "rejected",
    "url": "https://www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo/"
+  },
+  "//www.therobotreport.com/gecko-robotics-earns-300m-contract-with-the-u-s-navy": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-20",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 2.6,
+   "status": "screened",
+   "title": "Gecko Robotics secures $300M contract with the U.S. Navy",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/gecko-robotics-earns-300m-contract-with-the-u-s-navy/"
+  },
+  "//www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-23",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 2.1,
+   "status": "screened",
+   "title": "Generative Bionics to launch Physical AI Data Factory in Italy",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/generative-bionics-to-launch-physical-ai-data-factory-in-italy/"
   },
   "//www.therobotreport.com/how-adi-is-helping-robotics-startups-scale-2": {
    "first_seen": "2026-10-19",
@@ -287,6 +437,20 @@
    "title": "RoboBusiness 2026 panel to discuss reshoring with robots",
    "track": "rejected",
    "url": "https://www.therobotreport.com/robobusiness-2026-panel-discusses-reshoring-with-robots/"
+  },
+  "//www.therobotreport.com/teradyne-robotics-partners-sereact-scale-physical-ai-retail-logistics": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-25",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.5,
+   "status": "screened",
+   "title": "Teradyne Robotics partners with Sereact to scale physical AI in retail and logistics",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/teradyne-robotics-partners-sereact-scale-physical-ai-retail-logistics/"
   },
   "//www.therobotreport.com/why-dexterity-is-physical-ai-real-bottleneck": {
    "first_seen": "2026-10-11",
@@ -1156,9 +1320,286 @@
    "title": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
    "track": "rejected",
    "url": "https://arxiv.org/abs/2610.21755v1"
+  },
+  "arxiv:2610.24514": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-17",
+   "score": 6.6,
+   "status": "screened",
+   "title": "Understanding compression-extension error asymmetry in universal machine-learning interatomic potentials",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.24514v1"
+  },
+  "arxiv:2610.24908": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-17",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 3.1,
+   "status": "screened",
+   "title": "A Symmetry-Matching Approach to Blind-Spot Reduction in Sparse Autoencoders",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.24908v1"
+  },
+  "arxiv:2610.25565": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-18",
+   "score": 5.6,
+   "status": "screened",
+   "title": "Concurrent two-scale topology optimization of printable bone scaffolds via rectified-flow generation and exact latent-space refinement",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.25565v1"
+  },
+  "arxiv:2610.25605": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "score": 5.9,
+   "status": "screened",
+   "title": "PRISM: Prior Relational Information for Self-supervised Modeling to Enhance Solubility OOD Generalization",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.25605v1"
+  },
+  "arxiv:2610.25619": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "score": 6.2,
+   "status": "screened",
+   "title": "Autonomous adaptive spectral analysis with an LLM agent for self-driving laboratories",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.25619v1"
+  },
+  "arxiv:2610.26301": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "score": 4.5,
+   "status": "screened",
+   "title": "Machine Learning-Assisted Discovery of Carbon-Related Defect Formation Mechanisms in Diamond",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.26301v1"
+  },
+  "arxiv:2610.26414": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.5,
+   "status": "screened",
+   "title": "RoboMMT: Learning Stable Tracking of Modulated Expressive and Interactive Robot Motion",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.26414v1"
+  },
+  "arxiv:2610.26791": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "score": 5.1,
+   "status": "screened",
+   "title": "Physics-Constrained Modeling and Inference of the Equation of State for Dissociative Materials",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.26791v1"
+  },
+  "arxiv:2610.27136": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-19",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 3.1,
+   "status": "screened",
+   "title": "Ammonia-Hydrogen Phase Equilibria in Planetary Envelopes from First-Principles-Based Machine-Learning Molecular Dynamics",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.27136v1"
+  },
+  "arxiv:2610.27859": {
+   "first_seen": "2026-10-26",
+   "issue": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-20",
+   "score": 7.1,
+   "status": "published",
+   "title": "Value-level data provenance in an electronic laboratory notebook used by humans and language-model agents: An experience report",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.27859v1"
+  },
+  "arxiv:2610.28363": {
+   "first_seen": "2026-10-26",
+   "issue": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-20",
+   "score": 7.0,
+   "status": "published",
+   "title": "TexFlow: learning crystallographic texture on SO(3) manifold via normalizing flows",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.28363v1"
+  },
+  "arxiv:2610.28493": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-20",
+   "score": 5.2,
+   "status": "screened",
+   "title": "Multiscale Modeling of Zr Corrosion: Predicting Microstructures of Oxide Films",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.28493v1"
+  },
+  "arxiv:2610.29351": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.3,
+   "status": "screened",
+   "title": "Closed-Loop Dual-Reference Guidance for Accent Control in Cross-Lingual Voice Cloning",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.29351v2"
+  },
+  "arxiv:2610.29362": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "score": 5.7,
+   "status": "screened",
+   "title": "Compositional neural networks for multimodal X-ray and neutron scattering inversion",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.29362v1"
+  },
+  "arxiv:2610.29559": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "score": 4.8,
+   "status": "screened",
+   "title": "Certified Neural Approximation of Robust Nonlinear Model Predictive Control",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.29559v1"
+  },
+  "arxiv:2610.29895": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "score": 6.1,
+   "status": "screened",
+   "title": "Automated Materials Data and Knowledge Extraction using Machine Learning and Large Language Models",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.29895v1"
+  },
+  "arxiv:2610.30404": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "score": 5.5,
+   "status": "screened",
+   "title": "Microstructural Generative Inverse Models for Additive Manufacturing Digital Twins",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.30404v1"
+  },
+  "arxiv:2610.30411": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-21",
+   "score": 5.5,
+   "status": "screened",
+   "title": "AcoustiPrint: Physics-Guided Neural Design of Manufacturable Acoustic Structures",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.30411v1"
+  },
+  "arxiv:2610.30591": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-22",
+   "score": 6.0,
+   "status": "screened",
+   "title": "Decoding Composition-Structure-Performance Relations in Sodium Layered Oxide Positive Electrode Materials",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.30591v1"
+  },
+  "arxiv:2610.30833": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-22",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 3.3,
+   "status": "screened",
+   "title": "Light pulse propagation through a dielectric slab. II. Two roads to the same field: numerical cross-validation of local (FDTD-ADE) and non-local (retarded integral-equation) solutions",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.30833v1"
+  },
+  "arxiv:2610.30842": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-22",
+   "score": 4.6,
+   "status": "screened",
+   "title": "A neural-network model to find correlations in astrochemical space",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.30842v1"
+  },
+  "arxiv:2610.31538": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-22",
+   "score": 4.2,
+   "status": "screened",
+   "title": "LACToS: Local Anomaly Detection via Conditional Typicality of Superpixels",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.31538v1"
+  },
+  "arxiv:2610.31539": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-22",
+   "score": 5.7,
+   "status": "screened",
+   "title": "PYTHIA, a transferable machine learning framework for simultaneous defect and adsorption site optimization",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.31539v1"
+  },
+  "arxiv:2610.32505": {
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "published_at": "2026-10-23",
+   "score": 5.7,
+   "status": "screened",
+   "title": "BAARC: Uncertainty-Driven Adaptive Partial Spectral Measurement to Full Reconstruction for Material Classification",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.32505v1"
   }
  },
  "runs": [
+  {
+   "date": "2026-10-26",
+   "failed_sources": [
+    "npj Computational Materials",
+    "Nature Communications · Materials science",
+    "npj Materials Degradation"
+   ],
+   "fetched": 39,
+   "new": 36,
+   "note": "",
+   "run_at": "2026-10-26T01:06:47+00:00",
+   "screened": 36,
+   "selected": 2,
+   "status": "published_degraded"
+  },
   {
    "date": "2026-10-19",
    "failed_sources": [
