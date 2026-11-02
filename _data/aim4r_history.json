@@ -41,6 +41,17 @@
     "en"
    ],
    "status": "published"
+  },
+  "2026-11-02": {
+   "items": [
+    "arxiv:2610.34642",
+    "arxiv:2610.34203"
+   ],
+   "languages": [
+    "zh",
+    "en"
+   ],
+   "status": "published"
   }
  },
  "items": {
@@ -53,6 +64,20 @@
    "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
    "track": "main",
    "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/"
+  },
+  "//www.microsoft.com/en-us/research/blog/from-synthetic-enterprise-data-evaluations-to-real-microsoft-copilot-ai-confidence": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-30",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.1,
+   "status": "screened",
+   "title": "From synthetic enterprise data evaluations to real Microsoft Copilot AI confidence",
+   "track": "rejected",
+   "url": "https://www.microsoft.com/en-us/research/blog/from-synthetic-enterprise-data-evaluations-to-real-microsoft-copilot-ai-confidence/"
   },
   "//www.microsoft.com/en-us/research/blog/solving-a-31-year-old-grand-challenge-in-mathematics-the-kls-conjecture": {
    "first_seen": "2026-10-26",
@@ -82,6 +107,21 @@
    "title": "Called to serve: Tech, research, and positive impact",
    "track": "rejected",
    "url": "https://www.microsoft.com/en-us/research/podcast/called-to-serve-tech-research-and-positive-impact-with-chris-white/"
+  },
+  "//www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-97": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-29",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 0.8,
+   "status": "screened",
+   "title": "Microsoft Research Focus – Edition #97",
+   "track": "rejected",
+   "url": "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-97/"
   },
   "//www.nature.com/articles/s41529-026-00896-4": {
    "first_seen": "2026-10-19",
@@ -160,6 +200,38 @@
    "track": "rejected",
    "url": "https://www.plasticstoday.com/automation/kuka-expands-european-reach-through-td-synnex"
   },
+  "//www.plasticstoday.com/automation/nanotec-unveils-compact-lba80-linear-actuator": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-30",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 1.2,
+   "status": "screened",
+   "title": "Nanotec Unveils Compact LBA80 Linear Actuator",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/automation/nanotec-unveils-compact-lba80-linear-actuator"
+  },
+  "//www.plasticstoday.com/automation/plastics-and-rubber-robot-orders-surge": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-29",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 1.9,
+   "status": "screened",
+   "title": "Plastics and Rubber Robot Orders Surge",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/automation/plastics-and-rubber-robot-orders-surge"
+  },
   "//www.plasticstoday.com/automation/why-automation-demand-is-rising-as-factories-downsize": {
    "first_seen": "2026-10-26",
    "last_seen": "2026-10-26",
@@ -206,6 +278,35 @@
    "track": "rejected",
    "url": "https://www.plasticstoday.com/industry-trends/plastics-deserve-credit-the-public-narrative-denies"
   },
+  "//www.plasticstoday.com/injection-molding/aim-processing-acquires-wisconsin-molder-retlaw": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 0.7,
+   "status": "screened",
+   "title": "AIM Processing Acquires Wisconsin Molder Retlaw",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/injection-molding/aim-processing-acquires-wisconsin-molder-retlaw"
+  },
+  "//www.plasticstoday.com/injection-molding/engel-showcases-ai-precision-molding-at-plastimagen-2026": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-30",
+   "rejected_by": [
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 2.5,
+   "status": "screened",
+   "title": "Engel Showcases AI, Precision Molding at Plastimagen 2026",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/injection-molding/engel-showcases-ai-precision-molding-at-plastimagen-2026"
+  },
   "//www.plasticstoday.com/injection-molding/husky-technologies-returns-to-exhibit-at-fakuma": {
    "first_seen": "2026-10-19",
    "last_seen": "2026-10-19",
@@ -221,6 +322,20 @@
    "title": "Husky Technologies Returns to Exhibit at Fakuma",
    "track": "rejected",
    "url": "https://www.plasticstoday.com/injection-molding/husky-technologies-returns-to-exhibit-at-fakuma"
+  },
+  "//www.plasticstoday.com/injection-molding/the-molding-setup-exception-drill-ai-assisted-shops-need": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-26",
+   "rejected_by": [
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 2.6,
+   "status": "screened",
+   "title": "The Molding Setup Exception Drill AI-Assisted Shops Need",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/injection-molding/the-molding-setup-exception-drill-ai-assisted-shops-need"
   },
   "//www.plasticstoday.com/materials/dutch-ai-startup-polyscout-designs-custom-polymers-in-weeks": {
    "first_seen": "2026-10-11",
@@ -251,6 +366,22 @@
    "title": "LG Chem Showcases Advanced Materials at Fakuma",
    "track": "rejected",
    "url": "https://www.plasticstoday.com/materials/lg-chem-showcases-advanced-materials-at-fakuma"
+  },
+  "//www.plasticstoday.com/medical/enlil-bets-on-ai-to-speed-fda-submissions": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "rejected_by": [
+    "gate:domain_link",
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 1.7,
+   "status": "screened",
+   "title": "Enlil Bets on AI to Speed FDA Submissions",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/medical/enlil-bets-on-ai-to-speed-fda-submissions"
   },
   "//www.plasticstoday.com/medical/fibra-launches-smart-underwear-for-reproductive-health": {
    "first_seen": "2026-10-19",
@@ -300,6 +431,21 @@
    "track": "rejected",
    "url": "https://www.plasticstoday.com/packaging/pack-expo-draws-record-crowds-to-chicago"
   },
+  "//www.plasticstoday.com/sustainability/plastic-circularity-faces-real-but-solvable-barriers": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-30",
+   "rejected_by": [
+    "gate:new_information",
+    "gate:traceable",
+    "floor:relevance"
+   ],
+   "score": 2.4,
+   "status": "screened",
+   "title": "Plastic Circularity Faces Real but Solvable Barriers",
+   "track": "rejected",
+   "url": "https://www.plasticstoday.com/sustainability/plastic-circularity-faces-real-but-solvable-barriers"
+  },
   "//www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory": {
    "first_seen": "2026-10-26",
    "last_seen": "2026-10-26",
@@ -315,6 +461,33 @@
    "title": "AGCO to deploy Agility Digit humanoid in Kansas factory",
    "track": "rejected",
    "url": "https://www.therobotreport.com/agco-to-deploy-agility-digit-humanoid-in-kansas-factory/"
+  },
+  "//www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-29",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 1.0,
+   "status": "screened",
+   "title": "AGIBOT introduces Worken to measure robot productivity at AGIBOT Innovation Day 2026",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/agibot-introduces-worken-measure-robot-productivity-innovation-day-2026/"
+  },
+  "//www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 3.5,
+   "status": "screened",
+   "title": "ANYbotics begins delivering ANYmal X legged robot for explosive atmospheres",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/anybotics-begins-delivering-anymal-x-legged-robot-explosive-atmospheres/"
   },
   "//www.therobotreport.com/boston-dynamics-appoints-former-amazon-executive-rohit-prasad-new-ceo": {
    "first_seen": "2026-10-12",
@@ -393,6 +566,20 @@
    "track": "rejected",
    "url": "https://www.therobotreport.com/massrobotics-opens-applications-healthcare-robotics-startup-catalyst-program/"
   },
+  "//www.therobotreport.com/north-american-robot-orders-climb-24-8-q3-2026-says-a3": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.7,
+   "status": "screened",
+   "title": "North American robot orders climb 24.8% in Q3 of 2026, says A3",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/north-american-robot-orders-climb-24-8-q3-2026-says-a3/"
+  },
   "//www.therobotreport.com/pegasus-1-6-brings-video-understanding-physical-ai-says-twelvelabs": {
    "first_seen": "2026-10-12",
    "last_seen": "2026-10-12",
@@ -405,6 +592,20 @@
    "title": "Pegasus 1.6 brings video understanding to physical AI, says TwelveLabs",
    "track": "rejected",
    "url": "https://www.therobotreport.com/pegasus-1-6-brings-video-understanding-physical-ai-says-twelvelabs/"
+  },
+  "//www.therobotreport.com/percepto-launches-axion-ai-platform-unify-inspection-data-analysis": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-30",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.3,
+   "status": "screened",
+   "title": "Percepto launches Axion AI platform to unify inspection data analysis",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/percepto-launches-axion-ai-platform-unify-inspection-data-analysis/"
   },
   "//www.therobotreport.com/rise-machines-canceled-why-humanoids-ai-are-helpers-not-enemies": {
    "first_seen": "2026-10-19",
@@ -451,6 +652,20 @@
    "title": "Teradyne Robotics partners with Sereact to scale physical AI in retail and logistics",
    "track": "rejected",
    "url": "https://www.therobotreport.com/teradyne-robotics-partners-sereact-scale-physical-ai-retail-logistics/"
+  },
+  "//www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "rejected_by": [
+    "gate:new_information",
+    "floor:relevance"
+   ],
+   "score": 2.3,
+   "status": "screened",
+   "title": "Warp Sciences emerges from stealth, to apply robotics to drug research",
+   "track": "rejected",
+   "url": "https://www.therobotreport.com/warp-sciences-emerges-stealth-apply-robotics-drug-research/"
   },
   "//www.therobotreport.com/why-dexterity-is-physical-ai-real-bottleneck": {
    "first_seen": "2026-10-11",
@@ -1582,9 +1797,362 @@
    "title": "BAARC: Uncertainty-Driven Adaptive Partial Spectral Measurement to Full Reconstruction for Material Classification",
    "track": "main",
    "url": "https://arxiv.org/abs/2610.32505v1"
+  },
+  "arxiv:2610.33484": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-24",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.7,
+   "status": "screened",
+   "title": "Can One Hear Geometry? Gauge-Invariant Spectral Descriptors for Text-to-B-rep Retrieval",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.33484v2"
+  },
+  "arxiv:2610.33575": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-24",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 4.1,
+   "status": "screened",
+   "title": "CADonatello: Towards Real-World Multi-Part 3D CAD Reconstruction",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.33575v1"
+  },
+  "arxiv:2610.33594": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-24",
+   "score": 5.1,
+   "status": "screened",
+   "title": "Counterfactual Model Testing Under Distribution Shift",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.33594v1"
+  },
+  "arxiv:2610.34029": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 6.3,
+   "status": "screened",
+   "title": "TCSP3.0: Template-Based Crystal Structure Prediction with Coefficient-Preserving Element Substitution and Structural Diversity",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.34029v1"
+  },
+  "arxiv:2610.34203": {
+   "first_seen": "2026-11-02",
+   "issue": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 6.5,
+   "status": "published",
+   "title": "MatOS: An Agent Operating System for Materials Research",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.34203v1"
+  },
+  "arxiv:2610.34304": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 6.1,
+   "status": "screened",
+   "title": "Real-Time Conveyor Belt Defect Detection via Edge TPU-Accelerated YOLOv11 on Raspberry Pi 5",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.34304v1"
+  },
+  "arxiv:2610.34420": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Phase field dislocation dynamics prediction of stacking fault widths in Cu-Al Alloys using generalised stacking fault energy from DFT and interatomic potentials",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.34420v1"
+  },
+  "arxiv:2610.34505": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 6.1,
+   "status": "screened",
+   "title": "Computational screening of amorphous lithium trivalent-metal chloride solid-state electrolytes",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.34505v1"
+  },
+  "arxiv:2610.34628": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 5.9,
+   "status": "screened",
+   "title": "From Autonomous Knowledge Generation to Generalizable Property Prediction: A Precision-First Pipeline for Electro-Optic Materials Discovery",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.34628v1"
+  },
+  "arxiv:2610.34642": {
+   "first_seen": "2026-11-02",
+   "issue": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-25",
+   "score": 7.1,
+   "status": "published",
+   "title": "No Value Is Better Than a Wrong Value: Finding and Handling Erroneous Data in Literature-Mined Datasets for AI",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.34642v1"
+  },
+  "arxiv:2610.35235": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-26",
+   "score": 4.7,
+   "status": "screened",
+   "title": "False-Alarm Improvements and Detection Trade-Offs in Quantum Machine Learning for Intrusion Detection: A Reproducible Secondary Analysis",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.35235v2"
+  },
+  "arxiv:2610.35535": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-26",
+   "score": 6.4,
+   "status": "screened",
+   "title": "Multi-objective Bayesian optimization reveals HiPIMS deposition rates exceeding direct current sputtering",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.35535v1"
+  },
+  "arxiv:2610.35606": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-26",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 1.8,
+   "status": "screened",
+   "title": "ArchiveLens: A Generative Spatial Knowledge Framework for Semantic Reconstruction of Historical Maps",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.35606v1"
+  },
+  "arxiv:2610.36135": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-26",
+   "score": 6.3,
+   "status": "screened",
+   "title": "Physical structure as an organizing principle for universal Hamiltonian learning",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.36135v1"
+  },
+  "arxiv:2610.36193": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-26",
+   "score": 6.1,
+   "status": "screened",
+   "title": "Learning the Chronology of Materials Discovery for Synthesizability Prediction",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.36193v1"
+  },
+  "arxiv:2610.36820": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 4.2,
+   "status": "screened",
+   "title": "An Incremental Knowledge-Graph Learner Digital Twin for Evidence-Grounded Early Warning",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.36820v2"
+  },
+  "arxiv:2610.37060": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "score": 5.7,
+   "status": "screened",
+   "title": "A hyper-reduction strategy for elastoplastic hydro-mechanical problems in partially saturated soil",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.37060v1"
+  },
+  "arxiv:2610.37152": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Cu intercalation and field-driven filament formation in vertically aligned MoS$_2$ memristors",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.37152v1"
+  },
+  "arxiv:2610.37581": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "rejected_by": [
+    "gate:domain_link",
+    "floor:relevance"
+   ],
+   "score": 2.7,
+   "status": "screened",
+   "title": "Water at the molecular frontier",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.37581v1"
+  },
+  "arxiv:2610.37597": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "score": 6.0,
+   "status": "screened",
+   "title": "The Acridine Polymorph Landscape: Characterization and Selective Control by Additives",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.37597v1"
+  },
+  "arxiv:2610.37843": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "score": 6.1,
+   "status": "screened",
+   "title": "Where the Error Lives: Spectral Representations of Learned Kohn-Sham Hamiltonians",
+   "track": "explore",
+   "url": "https://arxiv.org/abs/2610.37843v1"
+  },
+  "arxiv:2610.37880": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-27",
+   "score": 5.8,
+   "status": "screened",
+   "title": "Interpretable neural equation learning for high-dimensional materials data",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.37880v1"
+  },
+  "arxiv:2610.38477": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Strain-Induced BCC-to-FCC Transformation in Tungsten Uncovered by Molecular Dynamics Simulations with Machine Learning Potentials",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.38477v1"
+  },
+  "arxiv:2610.38491": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 3.0,
+   "status": "screened",
+   "title": "Two-Dimensional Magnetic Materials from Ferromagnetism to Altermagnetism: Fabrication, Symmetry, Evidence, and Device Readiness",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.38491v1"
+  },
+  "arxiv:2610.38850": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "score": 5.4,
+   "status": "screened",
+   "title": "Autonomous Quantum Measurement with Agentic AI",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.38850v1"
+  },
+  "arxiv:2610.38876": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "score": 5.4,
+   "status": "screened",
+   "title": "Learning Between the Lines: Interaction Interpolation in a Multi Element Machine Learning Interatomic Potential",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.38876v1"
+  },
+  "arxiv:2610.38939": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-28",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 4.1,
+   "status": "screened",
+   "title": "Optimization-based lane-changing trajectory planning in mixed traffic with embedded input convex neural networks",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.38939v1"
+  },
+  "arxiv:2610.39575": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-29",
+   "score": 5.3,
+   "status": "screened",
+   "title": "Hidden Phase Transition in Single-Polymer Stretching under Elongational Flow",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.39575v1"
+  },
+  "arxiv:2610.39689": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-29",
+   "score": 4.8,
+   "status": "screened",
+   "title": "AI for Science in Space: Orbital Laboratories, Planetary Fieldwork, and Embodied Autonomy",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.39689v1"
+  },
+  "arxiv:2610.40399": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-29",
+   "rejected_by": [
+    "floor:relevance"
+   ],
+   "score": 3.5,
+   "status": "screened",
+   "title": "Soliton-Lattice Origin of Incommensurability in High-Pressure Antimony",
+   "track": "rejected",
+   "url": "https://arxiv.org/abs/2610.40399v1"
+  },
+  "arxiv:2610.41164": {
+   "first_seen": "2026-11-02",
+   "last_seen": "2026-11-02",
+   "published_at": "2026-10-30",
+   "score": 6.1,
+   "status": "screened",
+   "title": "ORCHID: Connecting Finite-Temperature Thermodynamic Evidence to Computational Materials Discovery",
+   "track": "main",
+   "url": "https://arxiv.org/abs/2610.41164v1"
   }
  },
  "runs": [
+  {
+   "date": "2026-11-02",
+   "failed_sources": [
+    "npj Computational Materials",
+    "Nature Communications · Materials science"
+   ],
+   "fetched": 47,
+   "new": 46,
+   "note": "",
+   "run_at": "2026-11-02T02:15:00+00:00",
+   "screened": 46,
+   "selected": 2,
+   "status": "published_degraded"
+  },
   {
    "date": "2026-10-26",
    "failed_sources": [
